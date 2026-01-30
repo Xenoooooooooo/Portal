@@ -1,7 +1,10 @@
 import { auth, database } from './firebase-config.js';
 import { 
     onAuthStateChanged,
-    signOut 
+    signOut,
+    updatePassword,
+    reauthenticateWithCredential,
+    EmailAuthProvider
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { 
     ref, 
@@ -27,24 +30,31 @@ onAuthStateChanged(auth, async (user) => {
             if (userSnapshot.exists()) {
                 const userData = userSnapshot.val();
                 console.log('User data loaded:', userData);
-                
+
                 // Update UI with user data
                 updateUserProfile(userData);
-                
+
                 // Load dashboard data
                 await loadDashboard();
+
+                // Notify app that auth + user data are ready
+                document.dispatchEvent(new CustomEvent('authReady', { detail: { uid: user.uid, userData } }));
             } else {
                 console.log('No user data found, using auth profile');
                 // Use auth profile if no database entry
-                updateUserProfile({
+                const userData = {
                     name: user.displayName || user.email.split('@')[0],
                     email: user.email,
                     gpa: 0,
                     tasks: []
-                });
-                
+                };
+                updateUserProfile(userData);
+
                 // Still try to load dashboard
                 await loadDashboard();
+
+                // Notify app that auth is ready (with fallback userData)
+                document.dispatchEvent(new CustomEvent('authReady', { detail: { uid: user.uid, userData } }));
             }
         } catch (error) {
             console.error('Error loading user data:', error);
@@ -254,6 +264,239 @@ export function getCurrentUser() {
 
 export function getCurrentUserId() {
     return currentUser ? currentUser.uid : null;
+}
+
+// ===========================
+// Change Password Functionality
+// ===========================
+export async function changePassword(currentPassword, newPassword) {
+    if (!currentUser) {
+        throw new Error('No user is currently logged in');
+    }
+
+    try {
+        // Reauthenticate user with current password
+        const credential = EmailAuthProvider.credential(
+            currentUser.email,
+            currentPassword
+        );
+
+        await reauthenticateWithCredential(currentUser, credential);
+        console.log('User reauthenticated successfully');
+
+        // Update password
+        await updatePassword(currentUser, newPassword);
+        console.log('Password updated successfully');
+        
+        return {
+            success: true,
+            message: 'Password changed successfully!'
+        };
+    } catch (error) {
+        console.error('Error changing password:', error);
+        
+        if (error.code === 'auth/wrong-password') {
+            throw new Error('Current password is incorrect');
+        } else if (error.code === 'auth/weak-password') {
+            throw new Error('New password is too weak. Please use a stronger password.');
+        } else {
+            throw new Error(error.message || 'Failed to change password');
+        }
+    }
+}
+
+// Setup change password button handler
+document.addEventListener('DOMContentLoaded', () => {
+    const changePasswordBtn = document.getElementById('changePasswordBtn');
+    if (changePasswordBtn) {
+        changePasswordBtn.addEventListener('click', () => {
+            showChangePasswordModal();
+        });
+    }
+});
+
+function showChangePasswordModal() {
+    // Create modal
+    const overlay = document.createElement('div');
+    overlay.className = 'password-modal-overlay';
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    `;
+
+    const modal = document.createElement('div');
+    modal.className = 'password-modal';
+    modal.style.cssText = `
+        background: var(--white);
+        border-radius: 16px;
+        padding: 2rem;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    `;
+
+    modal.innerHTML = `
+        <h2 style="
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        ">
+            Change Password
+        </h2>
+        <form id="changePasswordForm" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div>
+                <label style="
+                    display: block;
+                    color: var(--text-primary);
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                ">
+                    Current Password
+                </label>
+                <input type="password" id="currentPassword" required style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 2px solid var(--border);
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    color: var(--text-primary);
+                    background: var(--white);
+                ">
+            </div>
+            <div>
+                <label style="
+                    display: block;
+                    color: var(--text-primary);
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                ">
+                    New Password
+                </label>
+                <input type="password" id="newPassword" required style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 2px solid var(--border);
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    color: var(--text-primary);
+                    background: var(--white);
+                ">
+            </div>
+            <div>
+                <label style="
+                    display: block;
+                    color: var(--text-primary);
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                ">
+                    Confirm Password
+                </label>
+                <input type="password" id="confirmPassword" required style="
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 2px solid var(--border);
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    color: var(--text-primary);
+                    background: var(--white);
+                ">
+            </div>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                <button type="button" id="cancelPassword" style="
+                    flex: 1;
+                    padding: 0.75rem;
+                    background: var(--light);
+                    border: 2px solid var(--border);
+                    border-radius: 8px;
+                    color: var(--text-primary);
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                ">
+                    Cancel
+                </button>
+                <button type="submit" style="
+                    flex: 1;
+                    padding: 0.75rem;
+                    background: var(--primary-color);
+                    border: none;
+                    border-radius: 8px;
+                    color: white;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                ">
+                    Change Password
+                </button>
+            </div>
+        </form>
+    `;
+
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    const form = modal.querySelector('#changePasswordForm');
+    const currentPassword = modal.querySelector('#currentPassword');
+    const newPassword = modal.querySelector('#newPassword');
+    const confirmPassword = modal.querySelector('#confirmPassword');
+    const cancelBtn = modal.querySelector('#cancelPassword');
+
+    // Handle cancel
+    cancelBtn.addEventListener('click', () => {
+        overlay.remove();
+    });
+
+    // Close on overlay click
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            overlay.remove();
+        }
+    });
+
+    // Handle form submission
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const current = currentPassword.value;
+        const newPass = newPassword.value;
+        const confirmPass = confirmPassword.value;
+
+        // Validate passwords
+        if (newPass !== confirmPass) {
+            alert('New passwords do not match!');
+            return;
+        }
+
+        if (newPass.length < 6) {
+            alert('New password must be at least 6 characters long!');
+            return;
+        }
+
+        try {
+            // Show loading state
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Changing...';
+
+            const result = await changePassword(current, newPass);
+            alert(result.message);
+            overlay.remove();
+        } catch (error) {
+            alert('Error: ' + error.message);
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Change Password';
+        }
+    });
 }
 
 console.log('Auth guard loaded successfully!');

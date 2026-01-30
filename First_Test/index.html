@@ -89,37 +89,37 @@
         <aside class="sidebar">
             <nav class="sidebar-nav">
                 <a href="#dashboard" class="nav-item active">
-                    <span class="nav-icon">📊</span>
+                    <span class="nav-icon"></span>
                     <span class="nav-text">Dashboard</span>
                 </a>
                 <a href="#courses" class="nav-item">
-                    <span class="nav-icon">📚</span>
+                    <span class="nav-icon"></span>
                     <span class="nav-text">My Courses</span>
                 </a>
                 <a href="#tasks" class="nav-item">
-                    <span class="nav-icon">✓</span>
+                    <span class="nav-icon"></span>
                     <span class="nav-text">Tasks</span>
                     <span class="badge">5</span>
                 </a>
                 <a href="#resources" class="nav-item">
-                    <span class="nav-icon">📁</span>
+                    <span class="nav-icon"></span>
                     <span class="nav-text">Resources</span>
                 </a>
                 <a href="#chat" class="nav-item">
-                    <span class="nav-icon">💬</span>
+                    <span class="nav-icon"></span>
                     <span class="nav-text">Chat</span>
                     <span class="badge">2</span>
                 </a>
                 <a href="#grades" class="nav-item">
-                    <span class="nav-icon">📈</span>
+                    <span class="nav-icon"></span>
                     <span class="nav-text">Grades</span>
                 </a>
                 <a href="#calendar" class="nav-item">
-                    <span class="nav-icon">📅</span>
+                    <span class="nav-icon"></span>
                     <span class="nav-text">Calendar</span>
                 </a>
                 <a href="#announcements" class="nav-item">
-                    <span class="nav-icon">📢</span>
+                    <span class="nav-icon"></span>
                     <span class="nav-text">Announcements</span>
                 </a>
             </nav>
@@ -139,28 +139,28 @@
                 <!-- Stats Cards -->
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: #3b82f6;">📚</div>
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);">📚</div>
                         <div class="stat-info">
                             <h3>0</h3>
                             <p>Active Courses</p>
                         </div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: #f59e0b;">✓</div>
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">✓</div>
                         <div class="stat-info">
                             <h3>0</h3>
                             <p>Pending Tasks</p>
                         </div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: #10b981;">📈</div>
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">📈</div>
                         <div class="stat-info">
                             <h3>0.0</h3>
                             <p>GPA</p>
                         </div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: #ef4444;">🎯</div>
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">🎯</div>
                         <div class="stat-info">
                             <h3>0%</h3>
                             <p>Attendance</p>
@@ -341,8 +341,19 @@
             <!-- Tasks Section -->
             <div id="tasks" class="content-section">
                 <div class="section-header">
-                    <h1>All Tasks</h1>
-                    <p>Manage your assignments and deadlines</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div>
+                            <h1>All Tasks</h1>
+                            <p>Manage your assignments and deadlines</p>
+                        </div>
+                        <button class="btn-add-task" id="mainAddTaskBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            Add Task
+                        </button>
+                    </div>
                 </div>
 
                 <div class="tasks-container">
@@ -354,57 +365,7 @@
                     </div>
 
                     <div class="task-list-full">
-                        <div class="task-item-full urgent">
-                            <div class="task-check"></div>
-                            <div class="task-content-full">
-                                <h3>Engineering Mechanics Assignment</h3>
-                                <p class="task-description">Complete problems 1-15 from Chapter 8. Include free body diagrams and detailed calculations.</p>
-                                <div class="task-meta">
-                                    <span class="task-course">📚 ENGR 301</span>
-                                    <span class="task-due">📅 Due: Tomorrow, 11:59 PM</span>
-                                    <span class="task-tag urgent">Urgent</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="task-item-full">
-                            <div class="task-check"></div>
-                            <div class="task-content-full">
-                                <h3>Thermodynamics Quiz Preparation</h3>
-                                <p class="task-description">Study Chapters 5-7, review lecture notes, and complete practice problems.</p>
-                                <div class="task-meta">
-                                    <span class="task-course">📚 ENGR 302</span>
-                                    <span class="task-due">📅 Due: Jan 30, 2026</span>
-                                    <span class="task-tag">Medium</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="task-item-full">
-                            <div class="task-check"></div>
-                            <div class="task-content-full">
-                                <h3>CAD Design Project</h3>
-                                <p class="task-description">Design a mechanical component using AutoCAD. Submit 3D model and technical drawings.</p>
-                                <div class="task-meta">
-                                    <span class="task-course">📚 ENGR 305</span>
-                                    <span class="task-due">📅 Due: Feb 5, 2026</span>
-                                    <span class="task-tag">Low</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="task-item-full">
-                            <div class="task-check"></div>
-                            <div class="task-content-full">
-                                <h3>Materials Science Lab Report</h3>
-                                <p class="task-description">Write comprehensive lab report on tensile testing experiment with data analysis.</p>
-                                <div class="task-meta">
-                                    <span class="task-course">📚 ENGR 304</span>
-                                    <span class="task-due">📅 Due: Feb 8, 2026</span>
-                                    <span class="task-tag">Low</span>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Tasks will be dynamically loaded here by task-manager.js -->
                     </div>
                 </div>
             </div>
@@ -413,8 +374,19 @@
             <!-- Resources Section -->
             <div id="resources" class="content-section">
                 <div class="section-header">
-                    <h1>Resources</h1>
-                    <p>Access course materials, documents, and study guides</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div>
+                            <h1>Resources</h1>
+                            <p>Access course materials, documents, and study guides</p>
+                        </div>
+                        <button class="btn-add-resource" id="mainAddResourceBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            Add Resource
+                        </button>
+                    </div>
                 </div>
 
                 <div class="resources-container">
@@ -478,79 +450,86 @@
             <div id="chat" class="content-section">
                 <div class="chat-container">
                     <div class="chat-sidebar">
-                        <div class="chat-search">
-                            <input type="text" placeholder="Search conversations...">
+                        <div style="border-bottom: 1px solid var(--border); padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); display: flex; justify-content: space-between; align-items: center;">
+                            Messages
+                            <div style="display: flex; gap: 0.5rem;">
+                                <div id="searchIcon" style="cursor: pointer; position: relative; font-size: 1.2rem;" onclick="showSearchModal()">🔍</div>
+                                <div id="messageRequestsIcon" style="cursor: pointer; position: relative;"></div>
+                            </div>
                         </div>
+                        
                         <div class="chat-list-full">
-                            <div class="chat-item-full active">
-                                <div class="chat-avatar-large">PT</div>
-                                <div class="chat-info">
-                                    <h4>Prof. Torres</h4>
-                                    <p>Thanks for submitting...</p>
-                                    <span class="chat-time">10m</span>
-                                </div>
-                            </div>
-
-                            <div class="chat-item-full unread">
-                                <div class="chat-avatar-large">MS</div>
-                                <div class="chat-info">
-                                    <h4>Maria Santos</h4>
-                                    <p>Did you finish the project?</p>
-                                    <span class="chat-time">1h</span>
-                                </div>
-                                <span class="unread-badge">2</span>
-                            </div>
-
-                            <div class="chat-item-full">
-                                <div class="chat-avatar-large">GS</div>
-                                <div class="chat-info">
-                                    <h4>Engineering Society</h4>
-                                    <p>Meeting tomorrow at 4 PM</p>
-                                    <span class="chat-time">3h</span>
-                                </div>
-                            </div>
-
-                            <div class="chat-item-full">
-                                <div class="chat-avatar-large">JR</div>
-                                <div class="chat-info">
-                                    <h4>Juan Reyes</h4>
-                                    <p>Can you help with the CAD...</p>
-                                    <span class="chat-time">1d</span>
-                                </div>
-                            </div>
+                            <!-- Conversations will be loaded dynamically from Firebase -->
                         </div>
+
                     </div>
 
                     <div class="chat-main">
                         <div class="chat-header-main">
-                            <div class="chat-avatar-large">PT</div>
+                            <div class="chat-avatar-large"></div>
                             <div>
-                                <h3>Prof. Torres</h3>
-                                <span class="status-online">● Online</span>
+                                <h3>Select a conversation</h3>
+                                <span class="status-online">● Waiting...</span>
                             </div>
                         </div>
 
                         <div class="chat-messages">
+                            <div class="message-date-divider">Today</div>
+
                             <div class="message received">
                                 <div class="message-avatar">PT</div>
-                                <div class="message-content">
-                                    <p>Hi Juan! I've received your assignment submission. Good work on the analysis!</p>
-                                    <span class="message-time">10:30 AM</span>
+                                <div class="message-wrapper">
+                                    <div class="message-content">
+                                        <p>Hi Juan! I've received your assignment submission. Good work on the analysis!</p>
+                                    </div>
+                                    <div class="message-footer">
+                                        <span class="message-time">10:30 AM</span>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="message sent">
-                                <div class="message-content">
-                                    <p>Thank you, Professor! I worked really hard on it.</p>
-                                    <span class="message-time">10:35 AM</span>
+                                <div class="message-wrapper">
+                                    <div class="message-content">
+                                        <p>Thank you, Professor! I worked really hard on it.</p>
+                                    </div>
+                                    <div class="message-footer">
+                                        <span class="message-time">10:35 AM</span>
+                                        <span class="read-receipt">✓✓</span>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="message received">
                                 <div class="message-avatar">PT</div>
-                                <div class="message-content">
-                                    <p>I can see that. Keep up the good work. Let me know if you need any clarification on the feedback.</p>
-                                    <span class="message-time">10:40 AM</span>
+                                <div class="message-wrapper">
+                                    <div class="message-content">
+                                        <p>I can see that. Keep up the good work. Let me know if you need any clarification on the feedback.</p>
+                                    </div>
+                                    <div class="message-footer">
+                                        <span class="message-time">10:40 AM</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="message sent">
+                                <div class="message-wrapper">
+                                    <div class="message-content">
+                                        <p>Will do! Thanks again.</p>
+                                    </div>
+                                    <div class="message-footer">
+                                        <span class="message-time">10:42 AM</span>
+                                        <span class="read-receipt">✓✓</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="message received">
+                                <div class="message-avatar">PT</div>
+                                <div class="typing-indicator">
+                                    <div class="typing-dot"></div>
+                                    <div class="typing-dot"></div>
+                                    <div class="typing-dot"></div>
                                 </div>
                             </div>
                         </div>

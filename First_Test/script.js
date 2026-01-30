@@ -1,13 +1,82 @@
 import { injectNavIcons } from './icons.js';
 import { themeManager } from './theme-manager.js';
 import { handleLogout } from './auth-logout.js';
+import { initializeTaskManager } from './task-manager.js';
+import { initializeAdminPanel } from './admin-panel.js';
+import { initializeResourcesViewer } from './resources-viewer.js';
+import { initializeChatManager } from './chat-manager.js';
 
 // Initialize icons when page loads
 document.addEventListener('DOMContentLoaded', () => {
     injectNavIcons();
     setupProfileDropdown();
     handleHashNavigation();
-    console.log('Icons, theme, and dropdown initialized!');
+
+    // Remove any lingering modal overlays that might block UI interaction
+    document.querySelectorAll('.msg-request-overlay, .search-modal-overlay, .modal-overlay, .confirm-overlay').forEach(el => el.remove());
+
+    // Defensive cleanup: remove any fixed-position elements with very high z-index
+    // (helps recover from stray overlays during development)
+    try {
+        document.querySelectorAll('body *').forEach(el => {
+            const cs = window.getComputedStyle(el);
+            if (cs && cs.position === 'fixed') {
+                const zi = parseInt(cs.zIndex) || 0;
+                if (zi >= 1000) {
+                    console.log('Removing blocking fixed element (z-index:', zi + ')', el);
+                    el.remove();
+                }
+            }
+        });
+    } catch (err) {
+        console.warn('Error during defensive overlay cleanup', err);
+    }
+
+    // Initialize modules that require an authenticated user after auth is ready
+    document.addEventListener('authReady', (e) => {
+        try {
+            // Initialize task manager once user is authenticated
+            initializeTaskManager();
+
+            // Initialize admin panel only for admin users
+            const userData = e && e.detail && e.detail.userData;
+            if (userData && userData.role === 'admin') {
+                initializeAdminPanel();
+            } else {
+                console.log('authReady: user is not admin or no userData');
+            }
+        } catch (err) {
+            console.error('Error handling authReady event:', err);
+        }
+    });
+
+    initializeResourcesViewer();
+    console.log('All modules initialized!');
+});
+
+// Handle navigation item clicks for tab switching
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Get the section ID from href (e.g., #dashboard -> dashboard)
+        const sectionId = this.getAttribute('href').substring(1);
+
+        // Special handling for logout
+        if (sectionId === 'logout') {
+            handleLogout(); // Use the new logout handler
+            return;
+        }
+
+        // Use the navigateToSection function
+        navigateToSection(sectionId);
+
+        // Update the URL hash
+        window.location.hash = sectionId;
+
+        console.log(`Switched to: ${sectionId}`);
+        showNotification(`Switched to ${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`);
+    });
 });
 
 // ===========================
@@ -99,6 +168,25 @@ function navigateToSection(sectionId) {
             }).catch(error => {
                 console.error('Error loading profile manager:', error);
             });
+        }
+        
+        // Initialize tasks if navigating to tasks section
+        if (sectionId === 'tasks') {
+            initializeTaskManager();
+        }
+        
+        // Refresh resources if navigating to resources section
+        if (sectionId === 'resources') {
+            import('./resources-viewer.js').then(module => {
+                module.refreshResourcesView();
+            }).catch(error => {
+                console.error('Error refreshing resources:', error);
+            });
+        }
+        
+        // Initialize chat if navigating to chat section
+        if (sectionId === 'chat') {
+            initializeChatManager();
         }
     }
     
@@ -444,7 +532,122 @@ function loadDashboardData() {
     console.log('Loading dashboard data...');
 }
 
+// ===========================
+// Task Management System
+// ===========================
+const TaskManager = {
+    // Initialize task functionality
+    init() {
+        this.loadTaskState();
+        this.setupTaskCheckboxes();
+        this.setupFilterButtons();
+        console.log('Task Manager initialized!');
+    },
+
+    // Load task completion state from localStorage
+    loadTaskState() {
+        const tasks = document.querySelectorAll('.task-item-full');
+        const savedState = JSON.parse(localStorage.getItem('taskState') || '{}');
+        
+        tasks.forEach((task, index) => {
+            const taskId = `task-${index}`;
+            if (savedState[taskId]) {
+                task.classList.add('completed');
+                const checkbox = task.querySelector('.task-check');
+                if (checkbox) checkbox.classList.add('checked');
+            }
+        });
+    },
+
+    // Setup checkbox click handlers
+    setupTaskCheckboxes() {
+        const checkboxes = document.querySelectorAll('.task-check');
+        checkboxes.forEach((checkbox, index) => {
+            checkbox.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const task = checkbox.closest('.task-item-full');
+                const taskId = `task-${index}`;
+                
+                // Toggle completed state
+                const isCompleted = task.classList.toggle('completed');
+                checkbox.classList.toggle('checked');
+                
+                // Save to localStorage
+                const savedState = JSON.parse(localStorage.getItem('taskState') || '{}');
+                if (isCompleted) {
+                    savedState[taskId] = true;
+                } else {
+                    delete savedState[taskId];
+                }
+                localStorage.setItem('taskState', JSON.stringify(savedState));
+                
+                console.log(`Task ${index} marked as ${isCompleted ? 'completed' : 'incomplete'}`);
+            });
+
+            // Make checkbox look clickable
+            checkbox.style.cursor = 'pointer';
+        });
+    },
+
+    // Setup filter button functionality
+    setupFilterButtons() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const taskList = document.querySelector('.task-list-full');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Get filter type
+                const filterType = button.textContent.trim();
+                this.filterTasks(filterType);
+            });
+        });
+    },
+
+    // Filter tasks based on selected filter
+    filterTasks(filterType) {
+        const tasks = document.querySelectorAll('.task-item-full');
+        
+        tasks.forEach(task => {
+            let show = false;
+            
+            switch(filterType) {
+                case 'All Tasks':
+                    show = true;
+                    break;
+                case 'Urgent':
+                    show = task.classList.contains('urgent');
+                    break;
+                case 'This Week':
+                    // Show tasks due within 7 days
+                    const dueText = task.querySelector('.task-due')?.textContent || '';
+                    show = dueText.includes('Tomorrow') || dueText.includes('Jan');
+                    break;
+                case 'Completed':
+                    show = task.classList.contains('completed');
+                    break;
+                default:
+                    show = true;
+            }
+            
+            // Show or hide task with animation
+            if (show) {
+                task.style.display = 'flex';
+                setTimeout(() => task.classList.add('fade-in'), 10);
+            } else {
+                task.classList.remove('fade-in');
+                task.style.display = 'none';
+            }
+        });
+    }
+};
+
+// Initialize task manager when page loads
 document.addEventListener('DOMContentLoaded', () => {
     loadDashboardData();
+    TaskManager.init();
     console.log('Dashboard loaded successfully!');
 });

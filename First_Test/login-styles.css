@@ -8,9 +8,9 @@
 }
 
 :root {
-    --primary-color: #1e3a8a;
+    --primary-color: #0f172a;
     --secondary-color: #3b82f6;
-    --accent-color: #f59e0b;
+    --accent-color: #06b6d4;
     --success-color: #10b981;
     --danger-color: #ef4444;
     --dark: #1f2937;
@@ -22,6 +22,22 @@
     --shadow-sm: 0 4px 12px rgba(59, 130, 246, 0.3);
     --shadow-md: 0 6px 16px rgba(59, 130, 246, 0.4);
     --transition: all 0.3s ease;
+    --gradient-cyan: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+}
+
+[data-theme="dark"] {
+    --primary-color: #1e293b;
+    --secondary-color: #60a5fa;
+    --accent-color: #06b6d4;
+    --success-color: #34d399;
+    --danger-color: #f87171;
+    --dark: #f3f4f6;
+    --light: #1f2937;
+    --white: #111827;
+    --border: #374151;
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --gradient-cyan: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
 }
 
 /* ===========================
@@ -48,7 +64,7 @@ body {
    Left Side - Branding
    =========================== */
 .login-left {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #0f172a 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,7 +103,7 @@ body {
 .logo-icon-large {
     width: 80px;
     height: 80px;
-    background: var(--accent-color);
+    background: var(--gradient-cyan);
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -95,22 +111,26 @@ body {
     font-weight: 700;
     font-size: 2rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: white;
 }
 
 .logo-large h1 {
     font-size: 3.5rem;
     font-weight: 700;
+    color: #ffffff;
 }
 
 .branding h2 {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
+    color: #ffffff;
 }
 
 .branding p {
     font-size: 1.1rem;
-    opacity: 0.9;
+    opacity: 1;
+    color: #e0e7ff;
 }
 
 /* ===========================
@@ -247,7 +267,7 @@ body {
 .btn-primary {
     width: 100%;
     padding: 0.875rem;
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
     color: var(--white);
     border: none;
     border-radius: 10px;
@@ -256,7 +276,7 @@ body {
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
     transition: var(--transition);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
     margin-top: 0.5rem;
 }
 

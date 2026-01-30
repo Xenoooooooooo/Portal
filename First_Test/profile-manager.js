@@ -465,4 +465,152 @@ async function saveProfile() {
     }
 }
 
+// ===========================
+// Settings Management
+// ===========================
+export function initializeSettings() {
+    setupNotificationToggles();
+    setupPrivacyToggles();
+    setupAcademicPreferences();
+    setupLanguageRegion();
+    setupDataStorage();
+}
+
+function setupNotificationToggles() {
+    const notificationIds = [
+        'emailNotifications',
+        'assignmentReminders',
+        'gradeNotifications',
+        'chatNotifications',
+        'announcementNotifications'
+    ];
+
+    notificationIds.forEach(id => {
+        const toggle = document.getElementById(id);
+        if (toggle) {
+            // Load saved preference
+            const savedState = localStorage.getItem(id);
+            if (savedState !== null) {
+                toggle.checked = savedState === 'true';
+            }
+
+            // Listen for changes
+            toggle.addEventListener('change', () => {
+                localStorage.setItem(id, toggle.checked);
+                console.log(`${id} updated to: ${toggle.checked}`);
+            });
+        }
+    });
+}
+
+function setupPrivacyToggles() {
+    const privacyIds = ['profileVisibility', 'onlineStatus'];
+    privacyIds.forEach(id => {
+        const toggle = document.getElementById(id);
+        if (toggle) {
+            // Load saved preference
+            const savedState = localStorage.getItem(id);
+            if (savedState !== null) {
+                toggle.checked = savedState === 'true';
+            }
+
+            // Listen for changes
+            toggle.addEventListener('change', () => {
+                localStorage.setItem(id, toggle.checked);
+                console.log(`${id} updated to: ${toggle.checked}`);
+            });
+        }
+    });
+}
+
+function setupAcademicPreferences() {
+    const allSelects = document.querySelectorAll('.settings-option .settings-select');
+    const academicSelects = [
+        { index: 0, id: 'calendarView', default: 'month' },
+        { index: 1, id: 'tasksSortBy', default: 'dueDate' },
+        { index: 2, id: 'weekStartsOn', default: 'sunday' }
+    ];
+
+    academicSelects.forEach(({ index, id, default: defaultValue }) => {
+        const selectElement = allSelects[index];
+        if (selectElement) {
+            const savedValue = localStorage.getItem(id);
+            if (savedValue) {
+                selectElement.value = savedValue;
+            } else {
+                selectElement.value = defaultValue;
+            }
+
+            selectElement.addEventListener('change', () => {
+                localStorage.setItem(id, selectElement.value);
+                console.log(`${id} updated to: ${selectElement.value}`);
+            });
+        }
+    });
+}
+
+function setupLanguageRegion() {
+    const allSelects = document.querySelectorAll('.settings-option .settings-select');
+    const regionSelects = [
+        { index: 3, id: 'language', default: 'en' },
+        { index: 4, id: 'timeFormat', default: '12' },
+        { index: 5, id: 'dateFormat', default: 'mdy' }
+    ];
+
+    regionSelects.forEach(({ index, id, default: defaultValue }) => {
+        const selectElement = allSelects[index];
+        if (selectElement) {
+            const savedValue = localStorage.getItem(id);
+            if (savedValue) {
+                selectElement.value = savedValue;
+            } else {
+                selectElement.value = defaultValue;
+            }
+
+            selectElement.addEventListener('change', () => {
+                localStorage.setItem(id, selectElement.value);
+                console.log(`${id} updated to: ${selectElement.value}`);
+            });
+        }
+    });
+}
+
+function setupDataStorage() {
+    const clearCacheBtn = document.getElementById('clearCacheBtn');
+    if (clearCacheBtn) {
+        clearCacheBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear all cached data?')) {
+                localStorage.clear();
+                alert('Cache cleared successfully!');
+                console.log('Cache cleared');
+            }
+        });
+    }
+
+    const downloadDataBtn = document.getElementById('downloadDataBtn');
+    if (downloadDataBtn) {
+        downloadDataBtn.addEventListener('click', () => {
+            const allData = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                allData[key] = localStorage.getItem(key);
+            }
+            const dataStr = JSON.stringify(allData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `user_data_${new Date().getTime()}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+            console.log('Data downloaded');
+        });
+    }
+}
+
+// Initialize settings when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    initializeSettings();
+});
+
 console.log('Profile management module loaded!');

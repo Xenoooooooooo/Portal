@@ -5,9 +5,13 @@ import {
     set,
     update,
     push,
+    remove,
     onValue,
     off
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+// Export database for use in other modules
+export { database };
 
 // ===========================
 // Get Current User Data

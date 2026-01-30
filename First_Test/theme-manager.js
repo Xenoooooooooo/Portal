@@ -68,6 +68,28 @@ document.addEventListener('DOMContentLoaded', () => {
             themeManager.toggleTheme();
         });
     }
+
+    // Setup compact mode toggle
+    const compactModeToggle = document.getElementById('compactMode');
+    if (compactModeToggle) {
+        // Load saved compact mode preference
+        const savedCompactMode = localStorage.getItem('compactMode') === 'true';
+        compactModeToggle.checked = savedCompactMode;
+        if (savedCompactMode) {
+            document.documentElement.setAttribute('data-compact', 'true');
+        }
+
+        // Listen for changes
+        compactModeToggle.addEventListener('change', () => {
+            const isCompact = compactModeToggle.checked;
+            localStorage.setItem('compactMode', isCompact);
+            if (isCompact) {
+                document.documentElement.setAttribute('data-compact', 'true');
+            } else {
+                document.documentElement.removeAttribute('data-compact');
+            }
+        });
+    }
 });
 
 console.log('Theme manager initialized!');
