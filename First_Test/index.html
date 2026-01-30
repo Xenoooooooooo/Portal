@@ -14,8 +14,8 @@
     <header class="header">
         <div class="header-left">
             <div class="logo">
-                <div class="logo-icon">⚙️</div>
-                <span>Engineering Portal</span>
+                <div class="logo-icon">LP</div>
+                <span>LSPU Engineering Portal</span>
             </div>
         </div>
         <div class="header-right">
@@ -27,12 +27,58 @@
                 <span class="notification-icon">🔔</span>
                 <span class="notification-badge">3</span>
             </div>
-            <div class="user-profile">
+            <div class="user-profile" id="userProfileBtn">
                 <div class="user-avatar">U</div>
                 <div class="user-info">
                     <div class="user-name">Loading...</div>
                     <div class="user-role">Student</div>
                 </div>
+                <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+            
+            <!-- Profile Dropdown Menu -->
+            <div class="profile-dropdown" id="profileDropdown">
+                <div class="dropdown-header">
+                    <div class="user-avatar-large">U</div>
+                    <div class="user-details">
+                        <div class="user-name-full">Loading...</div>
+                        <div class="user-email">loading@lspu.edu.ph</div>
+                    </div>
+                </div>
+                <div class="dropdown-divider"></div>
+                <a href="#profile" class="dropdown-item" data-action="profile">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>My Profile</span>
+                </a>
+                <a href="#settings" class="dropdown-item" data-action="settings">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6m9-9h-6m-6 0H3m15.364 6.364l-4.243-4.243m-6 0l-4.242 4.243m12.728 0l-4.242-4.243m-6 0l-4.243 4.243"></path>
+                    </svg>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="dropdown-item" data-action="help">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <span>Help & Support</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item logout-item" data-action="logout">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    <span>Logout</span>
+                </a>
             </div>
         </div>
     </header>
@@ -43,51 +89,40 @@
         <aside class="sidebar">
             <nav class="sidebar-nav">
                 <a href="#dashboard" class="nav-item active">
-                    <span class="nav-icon"></span>
+                    <span class="nav-icon">📊</span>
                     <span class="nav-text">Dashboard</span>
                 </a>
                 <a href="#courses" class="nav-item">
-                    <span class="nav-icon"></span>
+                    <span class="nav-icon">📚</span>
                     <span class="nav-text">My Courses</span>
                 </a>
                 <a href="#tasks" class="nav-item">
-                    <span class="nav-icon"></span>
+                    <span class="nav-icon">✓</span>
                     <span class="nav-text">Tasks</span>
                     <span class="badge">5</span>
                 </a>
                 <a href="#resources" class="nav-item">
-                    <span class="nav-icon"></span>
+                    <span class="nav-icon">📁</span>
                     <span class="nav-text">Resources</span>
                 </a>
                 <a href="#chat" class="nav-item">
-                    <span class="nav-icon"></span>
+                    <span class="nav-icon">💬</span>
                     <span class="nav-text">Chat</span>
                     <span class="badge">2</span>
                 </a>
                 <a href="#grades" class="nav-item">
-                    <span class="nav-icon"></span>
+                    <span class="nav-icon">📈</span>
                     <span class="nav-text">Grades</span>
                 </a>
                 <a href="#calendar" class="nav-item">
-                    <span class="nav-icon"></span>
+                    <span class="nav-icon">📅</span>
                     <span class="nav-text">Calendar</span>
                 </a>
                 <a href="#announcements" class="nav-item">
-                    <span class="nav-icon"></span>
+                    <span class="nav-icon">📢</span>
                     <span class="nav-text">Announcements</span>
                 </a>
             </nav>
-            
-            <div class="sidebar-footer">
-                <a href="#settings" class="nav-item">
-                    <span class="nav-icon"></span>
-                    <span class="nav-text">Settings</span>
-                </a>
-                <a href="#logout" class="nav-item">
-                    <span class="nav-icon"></span>
-                    <span class="nav-text">Logout</span>
-                </a>
-            </div>
         </aside>
 
         <!-- Main Content -->
@@ -748,36 +783,271 @@
                 </div>
             </div>
             <!-- End Announcements Section -->
-
-            <!-- Settings Section -->
-            <div id="settings" class="content-section">
+            <!-- Profile Section - Add this BEFORE Settings Section in index.html -->
+            <!-- Profile Section - UPDATED VERSION with Single Edit Button -->
+            <div id="profile" class="content-section">
                 <div class="section-header">
-                    <h1>Settings</h1>
-                    <p>Manage your account and preferences</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div>
+                            <h1>My Profile</h1>
+                            <p>Manage your personal and academic information</p>
+                        </div>
+                        <!-- Single Main Edit Button -->
+                        <button class="btn-edit" id="mainEditBtn" style="display: flex;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                            Edit Profile
+                        </button>
+                    </div>
                 </div>
 
-                <div class="settings-container">
-                    <div class="settings-card">
-                        <h3>Profile Information</h3>
-                        <div class="settings-form">
-                            <div class="form-group">
-                                <label>Full Name</label>
-                                <input type="text" value="Juan Dela Cruz" class="form-input">
+                <div class="profile-container">
+                    <!-- Profile Header Card -->
+                    <div class="profile-header-card">
+                        <div class="profile-avatar-section">
+                            <div class="profile-avatar-large" id="profileAvatarLarge">U</div>
+                            <button class="btn-upload-photo">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                    <circle cx="12" cy="13" r="4"></circle>
+                                </svg>
+                                Change Photo
+                            </button>
+                        </div>
+                        <div class="profile-info-section">
+                            <h2 id="profileFullName">Loading...</h2>
+                            <p class="profile-student-id" id="profileStudentId">Student ID: ...</p>
+                            <p class="profile-email" id="profileEmail">email@lspu.edu.ph</p>
+                            <div class="profile-badges">
+                                <span class="profile-badge">Regular Student</span>
+                                <span class="profile-badge" id="yearBadge">4th Year</span>
                             </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" value="juan.delacruz@lspu.edu.ph" class="form-input">
-                            </div>
-                            <div class="form-group">
-                                <label>Student ID</label>
-                                <input type="text" value="2024-00123" class="form-input" disabled>
-                            </div>
-                            <button class="btn-save">Save Changes</button>
                         </div>
                     </div>
 
+                    <!-- Personal Information -->
                     <div class="settings-card">
-                        <h3>Appearance</h3>
+                        <div class="card-header-profile">
+                            <h3>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                Personal Information
+                            </h3>
+                        </div>
+                        <div class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" id="firstName" class="form-input" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" id="lastName" class="form-input" disabled>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Date of Birth</label>
+                                    <input type="date" id="dateOfBirth" class="form-input" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <select id="gender" class="form-input" disabled>
+                                        <option value="">Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Prefer not to say</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Contact Number</label>
+                                    <input type="tel" id="contactNumber" class="form-input" placeholder="+63 XXX XXX XXXX" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Personal Email</label>
+                                    <input type="email" id="personalEmail" class="form-input" placeholder="personal@email.com" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Academic Information -->
+                    <div class="settings-card">
+                        <div class="card-header-profile">
+                            <h3>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                </svg>
+                                Academic Information
+                            </h3>
+                        </div>
+                        <div class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Program/Degree</label>
+                                    <input type="text" id="program" class="form-input" placeholder="BS Computer Engineering" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Student ID</label>
+                                    <input type="text" id="studentIdInput" class="form-input" disabled style="background: var(--light); cursor: not-allowed;">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Year Level</label>
+                                    <select id="yearLevel" class="form-input" disabled>
+                                        <option value="">Select Year</option>
+                                        <option value="1">1st Year</option>
+                                        <option value="2">2nd Year</option>
+                                        <option value="3">3rd Year</option>
+                                        <option value="4">4th Year</option>
+                                        <option value="5">5th Year</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Section</label>
+                                    <input type="text" id="section" class="form-input" placeholder="A" disabled>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Academic Status</label>
+                                    <select id="academicStatus" class="form-input" disabled>
+                                        <option value="regular">Regular</option>
+                                        <option value="irregular">Irregular</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Expected Graduation</label>
+                                    <input type="month" id="graduationDate" class="form-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Address Information -->
+                    <div class="settings-card">
+                        <div class="card-header-profile">
+                            <h3>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                Address Information
+                            </h3>
+                        </div>
+                        <div class="profile-form">
+                            <div class="form-group">
+                                <label>Current Address</label>
+                                <input type="text" id="currentAddress" class="form-input" placeholder="House No., Street, Barangay" disabled>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>City/Municipality</label>
+                                    <input type="text" id="city" class="form-input" placeholder="Calamba" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Province</label>
+                                    <input type="text" id="province" class="form-input" placeholder="Laguna" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Zip Code</label>
+                                    <input type="text" id="zipCode" class="form-input" placeholder="4027" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Contact -->
+                    <div class="settings-card">
+                        <div class="card-header-profile">
+                            <h3>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                                Emergency Contact
+                            </h3>
+                        </div>
+                        <div class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Contact Name</label>
+                                    <input type="text" id="emergencyName" class="form-input" placeholder="Parent/Guardian Name" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Relationship</label>
+                                    <input type="text" id="emergencyRelationship" class="form-input" placeholder="Mother, Father, etc." disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Contact Number</label>
+                                <input type="tel" id="emergencyContact" class="form-input" placeholder="+63 XXX XXX XXXX" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- About Me -->
+                    <div class="settings-card">
+                        <div class="card-header-profile">
+                            <h3>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                                About Me
+                            </h3>
+                        </div>
+                        <div class="profile-form">
+                            <div class="form-group">
+                                <label>Bio</label>
+                                <textarea id="bio" class="form-textarea" rows="4" placeholder="Tell us about yourself, your interests, and goals..." disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save Changes Button (Hidden by default, shows when editing) -->
+                    <div class="profile-actions" style="display: none;" id="profileActions">
+                        <button class="btn-cancel" id="cancelEdit">Cancel</button>
+                        <button class="btn-save-primary" id="saveProfile">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- End Profile Section -->
+
+                   
+            <!-- Settings Section - IMPROVED VERSION -->
+            <div id="settings" class="content-section">
+                <div class="section-header">
+                    <h1>Settings</h1>
+                    <p>Customize your experience and manage account preferences</p>
+                </div>
+
+                <div class="settings-container">
+                    
+                    <!-- Appearance Settings -->
+                    <div class="settings-card">
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6"></path>
+                            </svg>
+                            <h3>Appearance</h3>
+                        </div>
                         <div class="settings-options">
                             <div class="settings-option">
                                 <div>
@@ -789,29 +1059,56 @@
                                     <span class="slider"></span>
                                 </label>
                             </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Compact Mode</h4>
+                                    <p>Reduce spacing for more content on screen</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="compactMode">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Notification Settings -->
                     <div class="settings-card">
-                        <h3>Notifications</h3>
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                            </svg>
+                            <h3>Notifications</h3>
+                        </div>
                         <div class="settings-options">
                             <div class="settings-option">
                                 <div>
                                     <h4>Email Notifications</h4>
-                                    <p>Receive updates via email</p>
+                                    <p>Receive updates and announcements via email</p>
                                 </div>
                                 <label class="switch">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" id="emailNotifications" checked>
                                     <span class="slider"></span>
                                 </label>
                             </div>
                             <div class="settings-option">
                                 <div>
                                     <h4>Assignment Reminders</h4>
-                                    <p>Get notified about upcoming deadlines</p>
+                                    <p>Get notified 24 hours before assignment deadlines</p>
                                 </div>
                                 <label class="switch">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" id="assignmentReminders" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Grade Updates</h4>
+                                    <p>Notification when grades are posted</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="gradeNotifications" checked>
                                     <span class="slider"></span>
                                 </label>
                             </div>
@@ -821,12 +1118,233 @@
                                     <p>Notifications for new messages</p>
                                 </div>
                                 <label class="switch">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" id="chatNotifications" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Announcements</h4>
+                                    <p>Important updates from instructors and administration</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="announcementNotifications" checked>
                                     <span class="slider"></span>
                                 </label>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Privacy & Security -->
+                    <div class="settings-card">
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            <h3>Privacy & Security</h3>
+                        </div>
+                        <div class="settings-options">
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Profile Visibility</h4>
+                                    <p>Allow other students to view your profile</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="profileVisibility" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Show Online Status</h4>
+                                    <p>Let others see when you're online</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="onlineStatus" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-option-button">
+                                <div>
+                                    <h4>Change Password</h4>
+                                    <p>Update your account password</p>
+                                </div>
+                                <button class="btn-secondary" id="changePasswordBtn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                                        <polyline points="10 17 15 12 10 7"></polyline>
+                                        <line x1="15" y1="12" x2="3" y2="12"></line>
+                                    </svg>
+                                    Change Password
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Academic Preferences -->
+                    <div class="settings-card">
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                            <h3>Academic Preferences</h3>
+                        </div>
+                        <div class="settings-options">
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Calendar View</h4>
+                                    <p>Default calendar view</p>
+                                </div>
+                                <select class="settings-select">
+                                    <option value="month">Month View</option>
+                                    <option value="week">Week View</option>
+                                    <option value="day">Day View</option>
+                                </select>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Tasks Sort By</h4>
+                                    <p>Default sorting for task list</p>
+                                </div>
+                                <select class="settings-select">
+                                    <option value="dueDate">Due Date</option>
+                                    <option value="priority">Priority</option>
+                                    <option value="course">Course</option>
+                                </select>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Week Starts On</h4>
+                                    <p>First day of the week</p>
+                                </div>
+                                <select class="settings-select">
+                                    <option value="sunday">Sunday</option>
+                                    <option value="monday">Monday</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Language & Region -->
+                    <div class="settings-card">
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                            <h3>Language & Region</h3>
+                        </div>
+                        <div class="settings-options">
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Language</h4>
+                                    <p>Interface language</p>
+                                </div>
+                                <select class="settings-select">
+                                    <option value="en">English</option>
+                                    <option value="fil">Filipino</option>
+                                </select>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Time Format</h4>
+                                    <p>Display time in 12 or 24 hour format</p>
+                                </div>
+                                <select class="settings-select">
+                                    <option value="12">12-hour (2:30 PM)</option>
+                                    <option value="24">24-hour (14:30)</option>
+                                </select>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Date Format</h4>
+                                    <p>How dates are displayed</p>
+                                </div>
+                                <select class="settings-select">
+                                    <option value="mdy">MM/DD/YYYY</option>
+                                    <option value="dmy">DD/MM/YYYY</option>
+                                    <option value="ymd">YYYY-MM-DD</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data & Storage -->
+                    <div class="settings-card">
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                            </svg>
+                            <h3>Data & Storage</h3>
+                        </div>
+                        <div class="settings-options">
+                            <div class="settings-option-button">
+                                <div>
+                                    <h4>Clear Cache</h4>
+                                    <p>Free up space by clearing cached data</p>
+                                </div>
+                                <button class="btn-secondary" id="clearCacheBtn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="1 4 1 10 7 10"></polyline>
+                                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                                    </svg>
+                                    Clear Cache
+                                </button>
+                            </div>
+                            <div class="settings-option-button">
+                                <div>
+                                    <h4>Download My Data</h4>
+                                    <p>Export all your data from the system</p>
+                                </div>
+                                <button class="btn-secondary" id="downloadDataBtn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- About -->
+                    <div class="settings-card">
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                            <h3>About</h3>
+                        </div>
+                        <div class="settings-info">
+                            <div class="info-item">
+                                <span class="info-label">Version</span>
+                                <span class="info-value">1.0.0</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Last Updated</span>
+                                <span class="info-value">January 30, 2026</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Build</span>
+                                <span class="info-value">2026.01.30</span>
+                            </div>
+                        </div>
+                        <div class="settings-links">
+                            <a href="#" class="settings-link">Terms of Service</a>
+                            <a href="#" class="settings-link">Privacy Policy</a>
+                            <a href="#" class="settings-link">Help Center</a>
+                            <a href="#" class="settings-link">Report a Bug</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <!-- End Settings Section -->
@@ -843,5 +1361,6 @@
     <script type="module" src="theme-manager.js"></script>
     
     <script type="module" src="script.js"></script>
+    <script type="module" src="profile-manager.js"></script>
 </body>
 </html>

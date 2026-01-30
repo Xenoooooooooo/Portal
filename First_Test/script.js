@@ -1,11 +1,119 @@
 import { injectNavIcons } from './icons.js';
 import { themeManager } from './theme-manager.js';
+import { handleLogout } from './auth-logout.js';
 
 // Initialize icons when page loads
 document.addEventListener('DOMContentLoaded', () => {
     injectNavIcons();
-    console.log('Icons and theme initialized!');
+    setupProfileDropdown();
+    handleHashNavigation();
+    console.log('Icons, theme, and dropdown initialized!');
 });
+
+// ===========================
+// Hash Navigation Handler
+// ===========================
+function handleHashNavigation() {
+    // Handle hash on page load
+    if (window.location.hash) {
+        const sectionId = window.location.hash.substring(1);
+        navigateToSection(sectionId);
+    }
+    
+    // Handle hash changes
+    window.addEventListener('hashchange', () => {
+        const sectionId = window.location.hash.substring(1);
+        navigateToSection(sectionId);
+    });
+}
+
+// ===========================
+// Profile Dropdown Menu
+// ===========================
+function setupProfileDropdown() {
+    const profileBtn = document.getElementById('userProfileBtn');
+    const dropdown = document.getElementById('profileDropdown');
+    
+    if (!profileBtn || !dropdown) return;
+    
+    // Toggle dropdown
+    profileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        profileBtn.classList.toggle('active');
+        dropdown.classList.toggle('active');
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
+            profileBtn.classList.remove('active');
+            dropdown.classList.remove('active');
+        }
+    });
+    
+    // Handle dropdown item clicks
+    const dropdownItems = dropdown.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            const action = item.dataset.action;
+            
+            if (action === 'profile') {
+                // Let default href=#profile work
+                profileBtn.classList.remove('active');
+                dropdown.classList.remove('active');
+            } else if (action === 'settings') {
+                // Let default behavior handle navigation
+                profileBtn.classList.remove('active');
+                dropdown.classList.remove('active');
+            } else if (action === 'logout') {
+                e.preventDefault();
+                profileBtn.classList.remove('active');
+                dropdown.classList.remove('active');
+                handleLogout(); // Use the new logout handler
+            } else if (action === 'help') {
+                e.preventDefault();
+                alert('Help & Support - Coming soon!');
+                profileBtn.classList.remove('active');
+                dropdown.classList.remove('active');
+            }
+        });
+    });
+}
+
+function navigateToSection(sectionId) {
+    // Remove active class from all sections
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Add active class to target section
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+        
+        // Initialize profile if navigating to profile section
+        if (sectionId === 'profile') {
+            // Import and initialize profile dynamically
+            import('./profile-manager.js').then(module => {
+                module.initializeProfile();
+            }).catch(error => {
+                console.error('Error loading profile manager:', error);
+            });
+        }
+    }
+    
+    // Update sidebar nav
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    const navItem = document.querySelector(`a[href="#${sectionId}"]`);
+    if (navItem) {
+        navItem.classList.add('active');
+    }
+    
+    // Scroll to top of main content
+    document.querySelector('.main-content').scrollTop = 0;
+}
 
 // ===========================
 // Navigation & Sidebar - Tab System
@@ -21,37 +129,18 @@ document.querySelectorAll('.nav-item').forEach(item => {
         
         // Special handling for logout
         if (sectionId === 'logout') {
-            if (confirm('Are you sure you want to logout?')) {
-                console.log('Logging out...');
-                showNotification('Logging out... Goodbye!');
-                // Add your logout logic here
-            }
+            handleLogout(); // Use the new logout handler
             return;
         }
         
-        // Remove active class from all nav items
-        document.querySelectorAll('.nav-item').forEach(nav => {
-            nav.classList.remove('active');
-        });
+        // Use the navigateToSection function
+        navigateToSection(sectionId);
         
-        // Add active class to clicked item
-        this.classList.add('active');
+        // Update the URL hash
+        window.location.hash = sectionId;
         
-        // Hide all content sections
-        document.querySelectorAll('.content-section').forEach(section => {
-            section.classList.remove('active');
-        });
-        
-        // Show the selected content section
-        const targetSection = document.getElementById(sectionId);
-        if (targetSection) {
-            targetSection.classList.add('active');
-            console.log(`Switched to: ${sectionId}`);
-            showNotification(`Switched to ${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`);
-        }
-        
-        // Scroll to top of main content
-        document.querySelector('.main-content').scrollTop = 0;
+        console.log(`Switched to: ${sectionId}`);
+        showNotification(`Switched to ${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`);
     });
 });
 
@@ -62,7 +151,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
 // Handle task checkbox clicks
 document.querySelectorAll('.task-check').forEach(checkbox => {
     checkbox.addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent task item click
+        e.stopPropagation();
         
         const taskItem = this.closest('.task-item');
         
@@ -81,7 +170,6 @@ document.querySelectorAll('.task-check').forEach(checkbox => {
             this.style.color = 'white';
             taskItem.style.opacity = '0.6';
             
-            // Optional: Show completion animation
             showNotification('Task completed! 🎉');
         }
     });
@@ -92,7 +180,6 @@ document.querySelectorAll('.task-item').forEach(item => {
     item.addEventListener('click', function() {
         const taskTitle = this.querySelector('h4').textContent;
         console.log(`Opening task: ${taskTitle}`);
-        // You can add modal or detailed view here
     });
 });
 
@@ -105,7 +192,6 @@ document.querySelectorAll('.download-btn').forEach(btn => {
         e.stopPropagation();
         const resourceName = this.closest('.resource-item').querySelector('h4').textContent;
         
-        // Check if it's a video play button
         if (this.textContent.includes('▶️')) {
             console.log(`Playing video: ${resourceName}`);
             showNotification(`Opening video: ${resourceName}`);
@@ -114,7 +200,6 @@ document.querySelectorAll('.download-btn').forEach(btn => {
             showNotification(`Downloading: ${resourceName}`);
         }
         
-        // Add animation
         this.style.transform = 'scale(1.2)';
         setTimeout(() => {
             this.style.transform = 'scale(1)';
@@ -131,13 +216,11 @@ document.querySelectorAll('.chat-item').forEach(item => {
         const chatName = this.querySelector('h4').textContent;
         console.log(`Opening chat with: ${chatName}`);
         
-        // Remove unread status
         if (this.classList.contains('unread')) {
             this.classList.remove('unread');
             updateNotificationCount(-1);
         }
         
-        // You can add chat window/modal here
         showNotification(`Opening chat with ${chatName}`);
     });
 });
@@ -152,8 +235,6 @@ if (searchInput) {
         const searchTerm = e.target.value.toLowerCase();
         console.log(`Searching for: ${searchTerm}`);
         
-        // You can implement search logic here
-        // For now, we'll just highlight matching items
         if (searchTerm.length > 2) {
             highlightSearchResults(searchTerm);
         }
@@ -177,11 +258,9 @@ if (notificationIcon) {
     notificationIcon.addEventListener('click', function() {
         console.log('Opening notifications');
         showNotification('You have 3 new notifications');
-        // You can add a dropdown menu here
     });
 }
 
-// Update notification count
 function updateNotificationCount(change) {
     const badge = document.querySelector('.notification-badge');
     if (badge) {
@@ -195,19 +274,6 @@ function updateNotificationCount(change) {
             badge.style.display = 'flex';
         }
     }
-}
-
-// ===========================
-// User Profile
-// ===========================
-
-const userProfile = document.querySelector('.user-profile');
-if (userProfile) {
-    userProfile.addEventListener('click', function() {
-        console.log('Opening user profile menu');
-        showNotification('Profile menu coming soon!');
-        // You can add dropdown menu here
-    });
 }
 
 // ===========================
@@ -238,15 +304,12 @@ document.querySelectorAll('.event-item').forEach(item => {
 // Utility Functions
 // ===========================
 
-// Show notification toast
 function showNotification(message) {
-    // Remove existing notifications
     const existingNotif = document.querySelector('.toast-notification');
     if (existingNotif) {
         existingNotif.remove();
     }
     
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = 'toast-notification';
     notification.textContent = message;
@@ -267,7 +330,6 @@ function showNotification(message) {
     
     document.body.appendChild(notification);
     
-    // Remove after 3 seconds
     setTimeout(() => {
         notification.style.animation = 'slideOutDown 0.3s ease';
         setTimeout(() => {
@@ -276,13 +338,10 @@ function showNotification(message) {
     }, 3000);
 }
 
-// Highlight search results
 function highlightSearchResults(searchTerm) {
-    // This is a placeholder for search highlighting functionality
     console.log(`Highlighting results for: ${searchTerm}`);
 }
 
-// Add CSS animations for notifications
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideInUp {
@@ -343,7 +402,6 @@ statCards.forEach((card, index) => {
 // Welcome Message
 // ===========================
 
-// Update greeting based on time
 function updateGreeting() {
     const welcomeSection = document.querySelector('.welcome-section h1');
     if (welcomeSection) {
@@ -362,7 +420,6 @@ function updateGreeting() {
     }
 }
 
-// Call on page load
 updateGreeting();
 
 // ===========================
@@ -380,16 +437,13 @@ All interactive features are working.
 `);
 
 // ===========================
-// Load Data (Placeholder)
+// Load Data
 // ===========================
 
-// This function would typically fetch data from an API
 function loadDashboardData() {
     console.log('Loading dashboard data...');
-    // Add your API calls here
 }
 
-// Call on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadDashboardData();
     console.log('Dashboard loaded successfully!');

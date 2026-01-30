@@ -82,6 +82,28 @@ function updateUserProfile(userData) {
         userAvatarElement.textContent = initials;
     }
     
+    // Update dropdown header
+    const userAvatarLarge = document.querySelector('.user-avatar-large');
+    if (userAvatarLarge) {
+        const initials = userName
+            .split(' ')
+            .map(word => word[0])
+            .join('')
+            .toUpperCase()
+            .substring(0, 2);
+        userAvatarLarge.textContent = initials;
+    }
+    
+    const userNameFull = document.querySelector('.user-name-full');
+    if (userNameFull) {
+        userNameFull.textContent = userName;
+    }
+    
+    const userEmail = document.querySelector('.user-email');
+    if (userEmail && currentUser.email) {
+        userEmail.textContent = currentUser.email;
+    }
+    
     // Update welcome message
     const welcomeMessage = document.querySelector('.welcome-section h1');
     if (welcomeMessage) {
@@ -191,6 +213,19 @@ function hideContentForNewUser(userData) {
 // ===========================
 // Logout Functionality
 // ===========================
+// Listen for logout event from dropdown
+document.addEventListener('userLogout', async () => {
+    try {
+        await signOut(auth);
+        console.log('User signed out successfully');
+        window.location.href = 'login.html';
+    } catch (error) {
+        console.error('Logout error:', error);
+        alert('Failed to logout. Please try again.');
+    }
+});
+
+// Export getCurrentUserId for use in other modules
 const logoutLink = document.querySelector('a[href="#logout"]');
 
 if (logoutLink) {
