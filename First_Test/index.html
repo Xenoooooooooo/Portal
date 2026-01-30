@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Portal | LSPU Student Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <div class="logo-icon">⚙️</div>
+                <span>Engineering Portal</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="search-bar">
+                <span>🔍</span>
+                <input type="text" placeholder="Search courses, resources...">
+            </div>
+            <div class="notifications">
+                <span class="notification-icon">🔔</span>
+                <span class="notification-badge">3</span>
+            </div>
+            <div class="user-profile">
+                <div class="user-avatar">U</div>
+                <div class="user-info">
+                    <div class="user-name">Loading...</div>
+                    <div class="user-role">Student</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="#courses" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">My Courses</span>
+                </a>
+                <a href="#tasks" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Tasks</span>
+                    <span class="badge">5</span>
+                </a>
+                <a href="#resources" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Resources</span>
+                </a>
+                <a href="#chat" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Chat</span>
+                    <span class="badge">2</span>
+                </a>
+                <a href="#grades" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Grades</span>
+                </a>
+                <a href="#calendar" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Calendar</span>
+                </a>
+                <a href="#announcements" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Announcements</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#settings" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Settings</span>
+                </a>
+                <a href="#logout" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Dashboard Section (Default) -->
+            <div id="dashboard" class="content-section active">
+                <!-- Welcome Section -->
+                <section class="welcome-section">
+                    <h1>Loading...</h1>
+                    <p>Please wait while we load your dashboard</p>
+                </section>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #3b82f6;">📚</div>
+                        <div class="stat-info">
+                            <h3>0</h3>
+                            <p>Active Courses</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #f59e0b;">✓</div>
+                        <div class="stat-info">
+                            <h3>0</h3>
+                            <p>Pending Tasks</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #10b981;">📈</div>
+                        <div class="stat-info">
+                            <h3>0.0</h3>
+                            <p>GPA</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #ef4444;">🎯</div>
+                        <div class="stat-info">
+                            <h3>0%</h3>
+                            <p>Attendance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Two Column Layout -->
+                <div class="content-grid">
+                    <!-- Left Column -->
+                    <div class="left-column">
+                        <!-- Upcoming Tasks -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Upcoming Tasks</h2>
+                                <a href="#tasks" class="view-all">View All</a>
+                            </div>
+                            <div class="task-list">
+                                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏳</div>
+                                    <p>Loading tasks...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Resources -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Recent Resources</h2>
+                                <a href="#resources" class="view-all">View All</a>
+                            </div>
+                            <div class="resource-list">
+                                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏳</div>
+                                    <p>Loading resources...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="right-column">
+                        <!-- Announcements -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Announcements</h2>
+                            </div>
+                            <div class="announcement-list">
+                                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏳</div>
+                                    <p>Loading announcements...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Chat -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Recent Chats</h2>
+                                <a href="#chat" class="view-all">Open Chat</a>
+                            </div>
+                            <div class="chat-list">
+                                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏳</div>
+                                    <p>Loading chats...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calendar Widget -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Upcoming Events</h2>
+                            </div>
+                            <div class="calendar-events">
+                                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏳</div>
+                                    <p>Loading events...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Dashboard Section -->
+
+            <!-- Courses Section -->
+            <div id="courses" class="content-section">
+                <div class="section-header">
+                    <h1>My Courses</h1>
+                    <p>All your enrolled courses for this semester</p>
+                </div>
+
+                <div class="courses-grid">
+                    <div class="course-card">
+                        <div class="course-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <h3>Engineering Mechanics</h3>
+                            <span class="course-code">ENGR 301</span>
+                        </div>
+                        <div class="course-body">
+                            <p class="course-instructor">👨‍🏫 Prof. Rodriguez</p>
+                            <p class="course-schedule">📅 Mon, Wed, Fri • 8:00 AM - 9:00 AM</p>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                                <span class="progress-text">75% Complete</span>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <button class="btn-course">View Course</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <h3>Thermodynamics</h3>
+                            <span class="course-code">ENGR 302</span>
+                        </div>
+                        <div class="course-body">
+                            <p class="course-instructor">👩‍🏫 Prof. Santos</p>
+                            <p class="course-schedule">📅 Tue, Thu • 10:00 AM - 12:00 PM</p>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%;"></div>
+                                </div>
+                                <span class="progress-text">60% Complete</span>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <button class="btn-course">View Course</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <h3>Fluid Mechanics</h3>
+                            <span class="course-code">ENGR 303</span>
+                        </div>
+                        <div class="course-body">
+                            <p class="course-instructor">👨‍🏫 Prof. Garcia</p>
+                            <p class="course-schedule">📅 Mon, Wed • 1:00 PM - 3:00 PM</p>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%;"></div>
+                                </div>
+                                <span class="progress-text">85% Complete</span>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <button class="btn-course">View Course</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <h3>Materials Science</h3>
+                            <span class="course-code">ENGR 304</span>
+                        </div>
+                        <div class="course-body">
+                            <p class="course-instructor">👩‍🏫 Prof. Reyes</p>
+                            <p class="course-schedule">📅 Tue, Thu • 2:00 PM - 4:00 PM</p>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 50%;"></div>
+                                </div>
+                                <span class="progress-text">50% Complete</span>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <button class="btn-course">View Course</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Courses Section -->
+
+            <!-- Tasks Section -->
+            <div id="tasks" class="content-section">
+                <div class="section-header">
+                    <h1>All Tasks</h1>
+                    <p>Manage your assignments and deadlines</p>
+                </div>
+
+                <div class="tasks-container">
+                    <div class="task-filters">
+                        <button class="filter-btn active">All Tasks</button>
+                        <button class="filter-btn">Urgent</button>
+                        <button class="filter-btn">This Week</button>
+                        <button class="filter-btn">Completed</button>
+                    </div>
+
+                    <div class="task-list-full">
+                        <div class="task-item-full urgent">
+                            <div class="task-check"></div>
+                            <div class="task-content-full">
+                                <h3>Engineering Mechanics Assignment</h3>
+                                <p class="task-description">Complete problems 1-15 from Chapter 8. Include free body diagrams and detailed calculations.</p>
+                                <div class="task-meta">
+                                    <span class="task-course">📚 ENGR 301</span>
+                                    <span class="task-due">📅 Due: Tomorrow, 11:59 PM</span>
+                                    <span class="task-tag urgent">Urgent</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="task-item-full">
+                            <div class="task-check"></div>
+                            <div class="task-content-full">
+                                <h3>Thermodynamics Quiz Preparation</h3>
+                                <p class="task-description">Study Chapters 5-7, review lecture notes, and complete practice problems.</p>
+                                <div class="task-meta">
+                                    <span class="task-course">📚 ENGR 302</span>
+                                    <span class="task-due">📅 Due: Jan 30, 2026</span>
+                                    <span class="task-tag">Medium</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="task-item-full">
+                            <div class="task-check"></div>
+                            <div class="task-content-full">
+                                <h3>CAD Design Project</h3>
+                                <p class="task-description">Design a mechanical component using AutoCAD. Submit 3D model and technical drawings.</p>
+                                <div class="task-meta">
+                                    <span class="task-course">📚 ENGR 305</span>
+                                    <span class="task-due">📅 Due: Feb 5, 2026</span>
+                                    <span class="task-tag">Low</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="task-item-full">
+                            <div class="task-check"></div>
+                            <div class="task-content-full">
+                                <h3>Materials Science Lab Report</h3>
+                                <p class="task-description">Write comprehensive lab report on tensile testing experiment with data analysis.</p>
+                                <div class="task-meta">
+                                    <span class="task-course">📚 ENGR 304</span>
+                                    <span class="task-due">📅 Due: Feb 8, 2026</span>
+                                    <span class="task-tag">Low</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Tasks Section -->
+
+            <!-- Resources Section -->
+            <div id="resources" class="content-section">
+                <div class="section-header">
+                    <h1>Resources</h1>
+                    <p>Access course materials, documents, and study guides</p>
+                </div>
+
+                <div class="resources-container">
+                    <div class="resource-categories">
+                        <button class="category-btn active">All Resources</button>
+                        <button class="category-btn">PDFs</button>
+                        <button class="category-btn">Videos</button>
+                        <button class="category-btn">Documents</button>
+                    </div>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon-large pdf">📄</div>
+                            <h3>Fluid Mechanics - Chapter 5</h3>
+                            <p>Comprehensive study guide covering viscous flow and boundary layers</p>
+                            <div class="resource-info">
+                                <span>📅 2 hours ago</span>
+                                <span>💾 2.4 MB</span>
+                            </div>
+                            <button class="btn-download">Download</button>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon-large video">🎥</div>
+                            <h3>Structural Analysis Tutorial</h3>
+                            <p>Video lecture on beam deflection and structural analysis methods</p>
+                            <div class="resource-info">
+                                <span>📅 Yesterday</span>
+                                <span>⏱️ 45 min</span>
+                            </div>
+                            <button class="btn-download">Watch</button>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon-large doc">📝</div>
+                            <h3>Engineering Ethics Case Studies</h3>
+                            <p>Real-world case studies and ethical scenarios in engineering practice</p>
+                            <div class="resource-info">
+                                <span>📅 3 days ago</span>
+                                <span>💾 1.1 MB</span>
+                            </div>
+                            <button class="btn-download">Download</button>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon-large pdf">📄</div>
+                            <h3>Thermodynamics Formula Sheet</h3>
+                            <p>Essential formulas and equations for thermodynamics exams</p>
+                            <div class="resource-info">
+                                <span>📅 1 week ago</span>
+                                <span>💾 850 KB</span>
+                            </div>
+                            <button class="btn-download">Download</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Resources Section -->
+
+            <!-- Chat Section -->
+            <div id="chat" class="content-section">
+                <div class="chat-container">
+                    <div class="chat-sidebar">
+                        <div class="chat-search">
+                            <input type="text" placeholder="Search conversations...">
+                        </div>
+                        <div class="chat-list-full">
+                            <div class="chat-item-full active">
+                                <div class="chat-avatar-large">PT</div>
+                                <div class="chat-info">
+                                    <h4>Prof. Torres</h4>
+                                    <p>Thanks for submitting...</p>
+                                    <span class="chat-time">10m</span>
+                                </div>
+                            </div>
+
+                            <div class="chat-item-full unread">
+                                <div class="chat-avatar-large">MS</div>
+                                <div class="chat-info">
+                                    <h4>Maria Santos</h4>
+                                    <p>Did you finish the project?</p>
+                                    <span class="chat-time">1h</span>
+                                </div>
+                                <span class="unread-badge">2</span>
+                            </div>
+
+                            <div class="chat-item-full">
+                                <div class="chat-avatar-large">GS</div>
+                                <div class="chat-info">
+                                    <h4>Engineering Society</h4>
+                                    <p>Meeting tomorrow at 4 PM</p>
+                                    <span class="chat-time">3h</span>
+                                </div>
+                            </div>
+
+                            <div class="chat-item-full">
+                                <div class="chat-avatar-large">JR</div>
+                                <div class="chat-info">
+                                    <h4>Juan Reyes</h4>
+                                    <p>Can you help with the CAD...</p>
+                                    <span class="chat-time">1d</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-main">
+                        <div class="chat-header-main">
+                            <div class="chat-avatar-large">PT</div>
+                            <div>
+                                <h3>Prof. Torres</h3>
+                                <span class="status-online">● Online</span>
+                            </div>
+                        </div>
+
+                        <div class="chat-messages">
+                            <div class="message received">
+                                <div class="message-avatar">PT</div>
+                                <div class="message-content">
+                                    <p>Hi Juan! I've received your assignment submission. Good work on the analysis!</p>
+                                    <span class="message-time">10:30 AM</span>
+                                </div>
+                            </div>
+
+                            <div class="message sent">
+                                <div class="message-content">
+                                    <p>Thank you, Professor! I worked really hard on it.</p>
+                                    <span class="message-time">10:35 AM</span>
+                                </div>
+                            </div>
+
+                            <div class="message received">
+                                <div class="message-avatar">PT</div>
+                                <div class="message-content">
+                                    <p>I can see that. Keep up the good work. Let me know if you need any clarification on the feedback.</p>
+                                    <span class="message-time">10:40 AM</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input-container">
+                            <input type="text" class="chat-input" placeholder="Type a message...">
+                            <button class="btn-send">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Chat Section -->
+
+            <!-- Grades Section -->
+            <div id="grades" class="content-section">
+                <div class="section-header">
+                    <h1>My Grades</h1>
+                    <p>Track your academic performance</p>
+                </div>
+
+                <div class="grades-summary">
+                    <div class="gpa-card">
+                        <h2>Current GPA</h2>
+                        <div class="gpa-value">3.8</div>
+                        <p>Excellent Performance</p>
+                    </div>
+                </div>
+
+                <div class="grades-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>Midterm</th>
+                                <th>Finals</th>
+                                <th>Projects</th>
+                                <th>Overall</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Engineering Mechanics</strong><br><small>ENGR 301</small></td>
+                                <td>92%</td>
+                                <td>-</td>
+                                <td>88%</td>
+                                <td>90%</td>
+                                <td><span class="grade-badge a">A</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thermodynamics</strong><br><small>ENGR 302</small></td>
+                                <td>85%</td>
+                                <td>-</td>
+                                <td>90%</td>
+                                <td>87%</td>
+                                <td><span class="grade-badge b">B+</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fluid Mechanics</strong><br><small>ENGR 303</small></td>
+                                <td>95%</td>
+                                <td>-</td>
+                                <td>92%</td>
+                                <td>94%</td>
+                                <td><span class="grade-badge a">A</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Materials Science</strong><br><small>ENGR 304</small></td>
+                                <td>88%</td>
+                                <td>-</td>
+                                <td>85%</td>
+                                <td>86%</td>
+                                <td><span class="grade-badge b">B+</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- End Grades Section -->
+
+            <!-- Calendar Section -->
+            <div id="calendar" class="content-section">
+                <div class="section-header">
+                    <h1>Academic Calendar</h1>
+                    <p>View your schedule and upcoming events</p>
+                </div>
+
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="btn-calendar">◀ Previous</button>
+                        <h2>January 2026</h2>
+                        <button class="btn-calendar">Next ▶</button>
+                    </div>
+
+                    <div class="calendar-grid">
+                        <div class="calendar-day-header">Sun</div>
+                        <div class="calendar-day-header">Mon</div>
+                        <div class="calendar-day-header">Tue</div>
+                        <div class="calendar-day-header">Wed</div>
+                        <div class="calendar-day-header">Thu</div>
+                        <div class="calendar-day-header">Fri</div>
+                        <div class="calendar-day-header">Sat</div>
+                        
+                        <div class="calendar-day inactive">29</div>
+                        <div class="calendar-day inactive">30</div>
+                        <div class="calendar-day inactive">31</div>
+                        <div class="calendar-day">1</div>
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day">3</div>
+                        <div class="calendar-day">4</div>
+                        
+                        <div class="calendar-day">5</div>
+                        <div class="calendar-day">6</div>
+                        <div class="calendar-day">7</div>
+                        <div class="calendar-day">8</div>
+                        <div class="calendar-day">9</div>
+                        <div class="calendar-day">10</div>
+                        <div class="calendar-day">11</div>
+                        
+                        <div class="calendar-day">12</div>
+                        <div class="calendar-day">13</div>
+                        <div class="calendar-day">14</div>
+                        <div class="calendar-day">15</div>
+                        <div class="calendar-day">16</div>
+                        <div class="calendar-day">17</div>
+                        <div class="calendar-day">18</div>
+                        
+                        <div class="calendar-day">19</div>
+                        <div class="calendar-day">20</div>
+                        <div class="calendar-day">21</div>
+                        <div class="calendar-day">22</div>
+                        <div class="calendar-day">23</div>
+                        <div class="calendar-day">24</div>
+                        <div class="calendar-day">25</div>
+                        
+                        <div class="calendar-day">26</div>
+                        <div class="calendar-day today event">27<div class="event-dot"></div></div>
+                        <div class="calendar-day event">28<div class="event-dot"></div></div>
+                        <div class="calendar-day">29</div>
+                        <div class="calendar-day event">30<div class="event-dot"></div></div>
+                        <div class="calendar-day">31</div>
+                        <div class="calendar-day inactive">1</div>
+                    </div>
+
+                    <div class="upcoming-events-list">
+                        <h3>Upcoming Events</h3>
+                        <div class="event-item-calendar">
+                            <div class="event-date-small">
+                                <span class="date-day">28</span>
+                                <span class="date-month">JAN</span>
+                            </div>
+                            <div class="event-info">
+                                <h4>Mechanics Exam</h4>
+                                <p>8:00 AM - Room 301</p>
+                            </div>
+                        </div>
+                        <div class="event-item-calendar">
+                            <div class="event-date-small">
+                                <span class="date-day">30</span>
+                                <span class="date-month">JAN</span>
+                            </div>
+                            <div class="event-info">
+                                <h4>Project Presentation</h4>
+                                <p>2:00 PM - Lab B</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Calendar Section -->
+
+            <!-- Announcements Section -->
+            <div id="announcements" class="content-section">
+                <div class="section-header">
+                    <h1>Announcements</h1>
+                    <p>Stay updated with the latest news and updates</p>
+                </div>
+
+                <div class="announcements-list">
+                    <div class="announcement-card">
+                        <div class="announcement-icon-large">📢</div>
+                        <div class="announcement-content-full">
+                            <span class="announcement-date">January 27, 2026 • 2 hours ago</span>
+                            <h3>Midterm Exam Schedule Released</h3>
+                            <p>The complete schedule for midterm examinations has been released. Please check your email for detailed information about exam dates, times, and rooms. Make sure to prepare well in advance.</p>
+                            <div class="announcement-tags">
+                                <span class="tag">Important</span>
+                                <span class="tag">Exams</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="announcement-card">
+                        <div class="announcement-icon-large">🎓</div>
+                        <div class="announcement-content-full">
+                            <span class="announcement-date">January 26, 2026 • 1 day ago</span>
+                            <h3>Guest Lecture: AI in Engineering</h3>
+                            <p>Join us for an exciting guest lecture on "Artificial Intelligence Applications in Modern Engineering" on January 29, 2026 at 2:00 PM in the Main Auditorium. Guest speaker: Dr. Maria Chen from MIT.</p>
+                            <div class="announcement-tags">
+                                <span class="tag">Event</span>
+                                <span class="tag">Guest Lecture</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="announcement-card">
+                        <div class="announcement-icon-large">⚠️</div>
+                        <div class="announcement-content-full">
+                            <span class="announcement-date">January 25, 2026 • 2 days ago</span>
+                            <h3>Lab Sessions Rescheduled</h3>
+                            <p>Due to equipment maintenance, all Materials Science lab sessions scheduled for Wednesday have been moved to Thursday at the same time slots. Please adjust your schedules accordingly.</p>
+                            <div class="announcement-tags">
+                                <span class="tag">Schedule Change</span>
+                                <span class="tag">Lab</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="announcement-card">
+                        <div class="announcement-icon-large">📚</div>
+                        <div class="announcement-content-full">
+                            <span class="announcement-date">January 23, 2026 • 4 days ago</span>
+                            <h3>Library Hours Extended</h3>
+                            <p>The engineering library will now be open until 10:00 PM on weekdays to support students during exam preparation period. Take advantage of the quiet study spaces and additional resources.</p>
+                            <div class="announcement-tags">
+                                <span class="tag">Library</span>
+                                <span class="tag">Facilities</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Announcements Section -->
+
+            <!-- Settings Section -->
+            <div id="settings" class="content-section">
+                <div class="section-header">
+                    <h1>Settings</h1>
+                    <p>Manage your account and preferences</p>
+                </div>
+
+                <div class="settings-container">
+                    <div class="settings-card">
+                        <h3>Profile Information</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" value="Juan Dela Cruz" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" value="juan.delacruz@lspu.edu.ph" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Student ID</label>
+                                <input type="text" value="2024-00123" class="form-input" disabled>
+                            </div>
+                            <button class="btn-save">Save Changes</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Appearance</h3>
+                        <div class="settings-options">
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Dark Mode</h4>
+                                    <p>Switch between light and dark theme</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="themeToggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Notifications</h3>
+                        <div class="settings-options">
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Email Notifications</h4>
+                                    <p>Receive updates via email</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Assignment Reminders</h4>
+                                    <p>Get notified about upcoming deadlines</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Chat Messages</h4>
+                                    <p>Notifications for new messages</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Settings Section -->
+
+        </main>
+    </div>
+
+    <!-- Firebase Authentication -->
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="auth-guard.js"></script>
+    
+    <!-- Icons and Theme -->
+    <script type="module" src="icons.js"></script>
+    <script type="module" src="theme-manager.js"></script>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
