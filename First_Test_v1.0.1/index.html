@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Portal | LSPU Student Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <div class="logo-icon">LP</div>
+                <span>LSPU Engineering Portal</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="search-bar">
+                <span>🔍</span>
+                <input type="text" placeholder="Search courses, resources...">
+            </div>
+            <div class="notifications">
+                <span class="notification-icon">🔔</span>
+                <span class="notification-badge">3</span>
+            </div>
+            <div class="user-profile" id="userProfileBtn">
+                <div class="user-avatar">U</div>
+                <div class="user-info">
+                    <div class="user-name">Loading...</div>
+                    <div class="user-role">Student</div>
+                </div>
+                <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+            
+            <!-- Profile Dropdown Menu -->
+            <div class="profile-dropdown" id="profileDropdown">
+                <div class="dropdown-header">
+                    <div class="user-avatar-large">U</div>
+                    <div class="user-details">
+                        <div class="user-name-full">Loading...</div>
+                        <div class="user-email">loading@lspu.edu.ph</div>
+                    </div>
+                </div>
+                <div class="dropdown-divider"></div>
+                <a href="#profile" class="dropdown-item" data-action="profile">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>My Profile</span>
+                </a>
+                <a href="#settings" class="dropdown-item" data-action="settings">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6m9-9h-6m-6 0H3m15.364 6.364l-4.243-4.243m-6 0l-4.242 4.243m12.728 0l-4.242-4.243m-6 0l-4.243 4.243"></path>
+                    </svg>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="dropdown-item" data-action="help">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <span>Help & Support</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item logout-item" data-action="logout">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="#courses" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">My Courses</span>
+                </a>
+                <a href="#tasks" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Tasks</span>
+                    <span class="badge">5</span>
+                </a>
+                <a href="#resources" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Resources</span>
+                </a>
+                <a href="#chat" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Chat</span>
+                    <span class="badge">2</span>
+                </a>
+                <a href="#grades" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Grades</span>
+                </a>
+                <a href="#calendar" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Calendar</span>
+                </a>
+                <a href="#announcements" class="nav-item">
+                    <span class="nav-icon"></span>
+                    <span class="nav-text">Announcements</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Dashboard Section (Default) -->
+            <div id="dashboard" class="content-section active">
+                <!-- Welcome Section -->
+                <section class="welcome-section">
+                    <h1>Loading...</h1>
+                    <p>Please wait while we load your dashboard</p>
+                </section>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);">📚</div>
+                        <div class="stat-info">
+                            <h3>0</h3>
+                            <p>Active Courses</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">✓</div>
+                        <div class="stat-info">
+                            <h3>0</h3>
+                            <p>Pending Tasks</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">📈</div>
+                        <div class="stat-info">
+                            <h3>0.0</h3>
+                            <p>GPA</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">🎯</div>
+                        <div class="stat-info">
+                            <h3>0%</h3>
+                            <p>Attendance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Two Column Layout -->
+                <div class="content-grid">
+                    <!-- Left Column -->
+                    <div class="left-column">
+                        <!-- Upcoming Tasks -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Upcoming Tasks</h2>
+                                <a href="#tasks" class="view-all">View All</a>
+                            </div>
+                            <div class="task-list">
+                                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏳</div>
+                                    <p>Loading tasks...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Resources -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Recent Resources</h2>
+                                <a href="#resources" class="view-all">View All</a>
+                            </div>
+                            <div class="resource-list">
+                                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏳</div>
+                                    <p>Loading resources...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="right-column">
+                        <!-- Announcements -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Announcements</h2>
+                            </div>
+                            <div class="announcement-list">
+                                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏳</div>
+                                    <p>Loading announcements...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Chat -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Recent Chats</h2>
+                                <a href="#chat" class="view-all">Open Chat</a>
+                            </div>
+                            <div class="chat-list">
+                                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏳</div>
+                                    <p>Loading chats...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calendar Widget -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Upcoming Events</h2>
+                            </div>
+                            <div class="calendar-events">
+                                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏳</div>
+                                    <p>Loading events...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Dashboard Section -->
+
+            <!-- Courses Section -->
+            <div id="courses" class="content-section">
+                <div class="section-header">
+                    <h1>My Courses</h1>
+                    <p>All your enrolled courses for this semester</p>
+                </div>
+
+                <div class="courses-grid">
+                    <div class="course-card">
+                        <div class="course-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <h3>Engineering Mechanics</h3>
+                            <span class="course-code">ENGR 301</span>
+                        </div>
+                        <div class="course-body">
+                            <p class="course-instructor">👨‍🏫 Prof. Rodriguez</p>
+                            <p class="course-schedule">📅 Mon, Wed, Fri • 8:00 AM - 9:00 AM</p>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                                <span class="progress-text">75% Complete</span>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <button class="btn-course">View Course</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <h3>Thermodynamics</h3>
+                            <span class="course-code">ENGR 302</span>
+                        </div>
+                        <div class="course-body">
+                            <p class="course-instructor">👩‍🏫 Prof. Santos</p>
+                            <p class="course-schedule">📅 Tue, Thu • 10:00 AM - 12:00 PM</p>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%;"></div>
+                                </div>
+                                <span class="progress-text">60% Complete</span>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <button class="btn-course">View Course</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <h3>Fluid Mechanics</h3>
+                            <span class="course-code">ENGR 303</span>
+                        </div>
+                        <div class="course-body">
+                            <p class="course-instructor">👨‍🏫 Prof. Garcia</p>
+                            <p class="course-schedule">📅 Mon, Wed • 1:00 PM - 3:00 PM</p>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%;"></div>
+                                </div>
+                                <span class="progress-text">85% Complete</span>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <button class="btn-course">View Course</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <h3>Materials Science</h3>
+                            <span class="course-code">ENGR 304</span>
+                        </div>
+                        <div class="course-body">
+                            <p class="course-instructor">👩‍🏫 Prof. Reyes</p>
+                            <p class="course-schedule">📅 Tue, Thu • 2:00 PM - 4:00 PM</p>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 50%;"></div>
+                                </div>
+                                <span class="progress-text">50% Complete</span>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <button class="btn-course">View Course</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Courses Section -->
+
+            <!-- Tasks Section -->
+            <div id="tasks" class="content-section">
+                <div class="section-header">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div>
+                            <h1>All Tasks</h1>
+                            <p>Manage your assignments and deadlines</p>
+                        </div>
+                        <button class="btn-add-task" id="mainAddTaskBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            Add Task
+                        </button>
+                    </div>
+                </div>
+
+                <div class="tasks-container">
+                    <div class="task-filters">
+                        <button class="filter-btn active">All Tasks</button>
+                        <button class="filter-btn">Urgent</button>
+                        <button class="filter-btn">This Week</button>
+                        <button class="filter-btn">Completed</button>
+                    </div>
+
+                    <div class="task-list-full">
+                        <!-- Tasks will be dynamically loaded here by task-manager.js -->
+                    </div>
+                </div>
+            </div>
+            <!-- End Tasks Section -->
+
+            <!-- Resources Section -->
+            <div id="resources" class="content-section">
+                <div class="section-header">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div>
+                            <h1>Resources</h1>
+                            <p>Access course materials, documents, and study guides</p>
+                        </div>
+                        <button class="btn-add-resource" id="mainAddResourceBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            Add Resource
+                        </button>
+                    </div>
+                </div>
+
+                <div class="resources-container">
+                    <div class="resource-categories">
+                        <button class="category-btn active">All Resources</button>
+                        <button class="category-btn">PDFs</button>
+                        <button class="category-btn">Videos</button>
+                        <button class="category-btn">Documents</button>
+                    </div>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon-large pdf">📄</div>
+                            <h3>Fluid Mechanics - Chapter 5</h3>
+                            <p>Comprehensive study guide covering viscous flow and boundary layers</p>
+                            <div class="resource-info">
+                                <span>📅 2 hours ago</span>
+                                <span>💾 2.4 MB</span>
+                            </div>
+                            <button class="btn-download">Download</button>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon-large video">🎥</div>
+                            <h3>Structural Analysis Tutorial</h3>
+                            <p>Video lecture on beam deflection and structural analysis methods</p>
+                            <div class="resource-info">
+                                <span>📅 Yesterday</span>
+                                <span>⏱️ 45 min</span>
+                            </div>
+                            <button class="btn-download">Watch</button>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon-large doc">📝</div>
+                            <h3>Engineering Ethics Case Studies</h3>
+                            <p>Real-world case studies and ethical scenarios in engineering practice</p>
+                            <div class="resource-info">
+                                <span>📅 3 days ago</span>
+                                <span>💾 1.1 MB</span>
+                            </div>
+                            <button class="btn-download">Download</button>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon-large pdf">📄</div>
+                            <h3>Thermodynamics Formula Sheet</h3>
+                            <p>Essential formulas and equations for thermodynamics exams</p>
+                            <div class="resource-info">
+                                <span>📅 1 week ago</span>
+                                <span>💾 850 KB</span>
+                            </div>
+                            <button class="btn-download">Download</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Resources Section -->
+
+            <!-- Chat Section -->
+            <div id="chat" class="content-section">
+                <div class="chat-container">
+                    <div class="chat-sidebar">
+                        <div style="border-bottom: 1px solid var(--border); padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); display: flex; justify-content: space-between; align-items: center;">
+                            Messages
+                            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                                <div id="searchIcon" style="cursor: pointer; position: relative; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; border-radius: 50%; background: var(--light);" onclick="window.showSearchModal()">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <path d="m21 21-4.35-4.35"></path>
+                                    </svg>
+                                </div>
+                                <div id="messageRequestsIcon" style="cursor: pointer; position: relative;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-list-full">
+                            <!-- Conversations will be loaded dynamically from Firebase -->
+                        </div>
+
+                    </div>
+
+                    <div class="chat-main">
+                        <div class="chat-header-main">
+                            <div class="chat-avatar-large"></div>
+                            <div>
+                                <h3>Select a conversation</h3>
+                                <span class="status-online">● Waiting...</span>
+                            </div>
+                        </div>
+
+                        <div class="chat-messages">
+                            <!-- Messages will be dynamically loaded from Firebase -->
+                        </div>
+
+                        <div class="chat-input-container">
+                            <input type="text" class="chat-input" placeholder="Type a message...">
+                            <button class="btn-send" title="Send message">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M16.6915026,12.4744748 L3.50612381,13.2599618 C3.19218622,13.2599618 3.03521743,13.4170592 3.03521743,13.5741566 L1.15159189,20.0151496 C0.8376543,20.8006365 0.99,21.89 1.77946707,22.52 C2.41,22.99 3.50612381,23.1 4.13399899,22.9429026 L21.714504,14.0454487 C22.6563168,13.5741566 23.1272231,12.6315722 22.9702544,11.6889879 L4.13399899,1.15831182 C3.34915502,0.9 2.40734225,1.00636533 1.77946707,1.4776575 C0.994623095,2.10604706 0.837654326,3.0486314 1.15159189,3.99721575 L3.03521743,10.4382088 C3.03521743,10.5953061 3.19218622,10.7524035 3.50612381,10.7524035 L16.6915026,11.5378905 C16.6915026,11.5378905 17.1624089,11.5378905 17.1624089,12.0091827 C17.1624089,12.4744748 16.6915026,12.4744748 16.6915026,12.4744748 Z"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Chat Section -->
+
+            <!-- Grades Section -->
+            <div id="grades" class="content-section">
+                <div class="section-header">
+                    <h1>My Grades</h1>
+                    <p>Track your academic performance</p>
+                </div>
+
+                <div class="grades-summary">
+                    <div class="gpa-card">
+                        <h2>Current GPA</h2>
+                        <div class="gpa-value">3.8</div>
+                        <p>Excellent Performance</p>
+                    </div>
+                </div>
+
+                <div class="grades-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>Midterm</th>
+                                <th>Finals</th>
+                                <th>Projects</th>
+                                <th>Overall</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Engineering Mechanics</strong><br><small>ENGR 301</small></td>
+                                <td>92%</td>
+                                <td>-</td>
+                                <td>88%</td>
+                                <td>90%</td>
+                                <td><span class="grade-badge a">A</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thermodynamics</strong><br><small>ENGR 302</small></td>
+                                <td>85%</td>
+                                <td>-</td>
+                                <td>90%</td>
+                                <td>87%</td>
+                                <td><span class="grade-badge b">B+</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fluid Mechanics</strong><br><small>ENGR 303</small></td>
+                                <td>95%</td>
+                                <td>-</td>
+                                <td>92%</td>
+                                <td>94%</td>
+                                <td><span class="grade-badge a">A</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Materials Science</strong><br><small>ENGR 304</small></td>
+                                <td>88%</td>
+                                <td>-</td>
+                                <td>85%</td>
+                                <td>86%</td>
+                                <td><span class="grade-badge b">B+</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- End Grades Section -->
+
+            <!-- Calendar Section -->
+            <div id="calendar" class="content-section">
+                <div class="section-header">
+                    <h1>Academic Calendar</h1>
+                    <p>View your schedule and upcoming events</p>
+                </div>
+
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="btn-calendar">◀ Previous</button>
+                        <h2>January 2026</h2>
+                        <button class="btn-calendar">Next ▶</button>
+                    </div>
+
+                    <div class="calendar-grid">
+                        <div class="calendar-day-header">Sun</div>
+                        <div class="calendar-day-header">Mon</div>
+                        <div class="calendar-day-header">Tue</div>
+                        <div class="calendar-day-header">Wed</div>
+                        <div class="calendar-day-header">Thu</div>
+                        <div class="calendar-day-header">Fri</div>
+                        <div class="calendar-day-header">Sat</div>
+                        
+                        <div class="calendar-day inactive">29</div>
+                        <div class="calendar-day inactive">30</div>
+                        <div class="calendar-day inactive">31</div>
+                        <div class="calendar-day">1</div>
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day">3</div>
+                        <div class="calendar-day">4</div>
+                        
+                        <div class="calendar-day">5</div>
+                        <div class="calendar-day">6</div>
+                        <div class="calendar-day">7</div>
+                        <div class="calendar-day">8</div>
+                        <div class="calendar-day">9</div>
+                        <div class="calendar-day">10</div>
+                        <div class="calendar-day">11</div>
+                        
+                        <div class="calendar-day">12</div>
+                        <div class="calendar-day">13</div>
+                        <div class="calendar-day">14</div>
+                        <div class="calendar-day">15</div>
+                        <div class="calendar-day">16</div>
+                        <div class="calendar-day">17</div>
+                        <div class="calendar-day">18</div>
+                        
+                        <div class="calendar-day">19</div>
+                        <div class="calendar-day">20</div>
+                        <div class="calendar-day">21</div>
+                        <div class="calendar-day">22</div>
+                        <div class="calendar-day">23</div>
+                        <div class="calendar-day">24</div>
+                        <div class="calendar-day">25</div>
+                        
+                        <div class="calendar-day">26</div>
+                        <div class="calendar-day today event">27<div class="event-dot"></div></div>
+                        <div class="calendar-day event">28<div class="event-dot"></div></div>
+                        <div class="calendar-day">29</div>
+                        <div class="calendar-day event">30<div class="event-dot"></div></div>
+                        <div class="calendar-day">31</div>
+                        <div class="calendar-day inactive">1</div>
+                    </div>
+
+                    <div class="upcoming-events-list">
+                        <h3>Upcoming Events</h3>
+                        <div class="event-item-calendar">
+                            <div class="event-date-small">
+                                <span class="date-day">28</span>
+                                <span class="date-month">JAN</span>
+                            </div>
+                            <div class="event-info">
+                                <h4>Mechanics Exam</h4>
+                                <p>8:00 AM - Room 301</p>
+                            </div>
+                        </div>
+                        <div class="event-item-calendar">
+                            <div class="event-date-small">
+                                <span class="date-day">30</span>
+                                <span class="date-month">JAN</span>
+                            </div>
+                            <div class="event-info">
+                                <h4>Project Presentation</h4>
+                                <p>2:00 PM - Lab B</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Calendar Section -->
+
+            <!-- Announcements Section -->
+            <div id="announcements" class="content-section">
+                <div class="section-header">
+                    <h1>Announcements</h1>
+                    <p>Stay updated with the latest news and updates</p>
+                </div>
+
+                <div class="announcements-list">
+                    <div class="announcement-card">
+                        <div class="announcement-icon-large">📢</div>
+                        <div class="announcement-content-full">
+                            <span class="announcement-date">January 27, 2026 • 2 hours ago</span>
+                            <h3>Midterm Exam Schedule Released</h3>
+                            <p>The complete schedule for midterm examinations has been released. Please check your email for detailed information about exam dates, times, and rooms. Make sure to prepare well in advance.</p>
+                            <div class="announcement-tags">
+                                <span class="tag">Important</span>
+                                <span class="tag">Exams</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="announcement-card">
+                        <div class="announcement-icon-large">🎓</div>
+                        <div class="announcement-content-full">
+                            <span class="announcement-date">January 26, 2026 • 1 day ago</span>
+                            <h3>Guest Lecture: AI in Engineering</h3>
+                            <p>Join us for an exciting guest lecture on "Artificial Intelligence Applications in Modern Engineering" on January 29, 2026 at 2:00 PM in the Main Auditorium. Guest speaker: Dr. Maria Chen from MIT.</p>
+                            <div class="announcement-tags">
+                                <span class="tag">Event</span>
+                                <span class="tag">Guest Lecture</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="announcement-card">
+                        <div class="announcement-icon-large">⚠️</div>
+                        <div class="announcement-content-full">
+                            <span class="announcement-date">January 25, 2026 • 2 days ago</span>
+                            <h3>Lab Sessions Rescheduled</h3>
+                            <p>Due to equipment maintenance, all Materials Science lab sessions scheduled for Wednesday have been moved to Thursday at the same time slots. Please adjust your schedules accordingly.</p>
+                            <div class="announcement-tags">
+                                <span class="tag">Schedule Change</span>
+                                <span class="tag">Lab</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="announcement-card">
+                        <div class="announcement-icon-large">📚</div>
+                        <div class="announcement-content-full">
+                            <span class="announcement-date">January 23, 2026 • 4 days ago</span>
+                            <h3>Library Hours Extended</h3>
+                            <p>The engineering library will now be open until 10:00 PM on weekdays to support students during exam preparation period. Take advantage of the quiet study spaces and additional resources.</p>
+                            <div class="announcement-tags">
+                                <span class="tag">Library</span>
+                                <span class="tag">Facilities</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Announcements Section -->
+            <!-- Profile Section - Add this BEFORE Settings Section in index.html -->
+            <!-- Profile Section - UPDATED VERSION with Single Edit Button -->
+            <div id="profile" class="content-section">
+                <div class="section-header">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div>
+                            <h1>My Profile</h1>
+                            <p>Manage your personal and academic information</p>
+                        </div>
+                        <!-- Single Main Edit Button -->
+                        <button class="btn-edit" id="mainEditBtn" style="display: flex;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                            Edit Profile
+                        </button>
+                    </div>
+                </div>
+
+                <div class="profile-container">
+                    <!-- Profile Header Card -->
+                    <div class="profile-header-card">
+                        <div class="profile-avatar-section">
+                            <div class="profile-avatar-large" id="profileAvatarLarge">U</div>
+                            <button class="btn-upload-photo">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                    <circle cx="12" cy="13" r="4"></circle>
+                                </svg>
+                                Change Photo
+                            </button>
+                        </div>
+                        <div class="profile-info-section">
+                            <h2 id="profileFullName">Loading...</h2>
+                            <p class="profile-student-id" id="profileStudentId">Student ID: ...</p>
+                            <p class="profile-email" id="profileEmail">email@lspu.edu.ph</p>
+                            <div class="profile-badges">
+                                <span class="profile-badge">Regular Student</span>
+                                <span class="profile-badge" id="yearBadge">4th Year</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Information -->
+                    <div class="settings-card">
+                        <div class="card-header-profile">
+                            <h3>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                Personal Information
+                            </h3>
+                        </div>
+                        <div class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" id="firstName" class="form-input" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" id="lastName" class="form-input" disabled>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Date of Birth</label>
+                                    <input type="date" id="dateOfBirth" class="form-input" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <select id="gender" class="form-input" disabled>
+                                        <option value="">Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Prefer not to say</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Contact Number</label>
+                                    <input type="tel" id="contactNumber" class="form-input" placeholder="+63 XXX XXX XXXX" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Personal Email</label>
+                                    <input type="email" id="personalEmail" class="form-input" placeholder="personal@email.com" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Academic Information -->
+                    <div class="settings-card">
+                        <div class="card-header-profile">
+                            <h3>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                </svg>
+                                Academic Information
+                            </h3>
+                        </div>
+                        <div class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Program/Degree</label>
+                                    <input type="text" id="program" class="form-input" placeholder="BS Computer Engineering" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Student ID</label>
+                                    <input type="text" id="studentIdInput" class="form-input" disabled style="background: var(--light); cursor: not-allowed;">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Year Level</label>
+                                    <select id="yearLevel" class="form-input" disabled>
+                                        <option value="">Select Year</option>
+                                        <option value="1">1st Year</option>
+                                        <option value="2">2nd Year</option>
+                                        <option value="3">3rd Year</option>
+                                        <option value="4">4th Year</option>
+                                        <option value="5">5th Year</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Section</label>
+                                    <input type="text" id="section" class="form-input" placeholder="A" disabled>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Academic Status</label>
+                                    <select id="academicStatus" class="form-input" disabled>
+                                        <option value="regular">Regular</option>
+                                        <option value="irregular">Irregular</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Expected Graduation</label>
+                                    <input type="month" id="graduationDate" class="form-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Address Information -->
+                    <div class="settings-card">
+                        <div class="card-header-profile">
+                            <h3>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                Address Information
+                            </h3>
+                        </div>
+                        <div class="profile-form">
+                            <div class="form-group">
+                                <label>Current Address</label>
+                                <input type="text" id="currentAddress" class="form-input" placeholder="House No., Street, Barangay" disabled>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>City/Municipality</label>
+                                    <input type="text" id="city" class="form-input" placeholder="Calamba" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Province</label>
+                                    <input type="text" id="province" class="form-input" placeholder="Laguna" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Zip Code</label>
+                                    <input type="text" id="zipCode" class="form-input" placeholder="4027" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Contact -->
+                    <div class="settings-card">
+                        <div class="card-header-profile">
+                            <h3>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                                Emergency Contact
+                            </h3>
+                        </div>
+                        <div class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Contact Name</label>
+                                    <input type="text" id="emergencyName" class="form-input" placeholder="Parent/Guardian Name" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Relationship</label>
+                                    <input type="text" id="emergencyRelationship" class="form-input" placeholder="Mother, Father, etc." disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Contact Number</label>
+                                <input type="tel" id="emergencyContact" class="form-input" placeholder="+63 XXX XXX XXXX" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- About Me -->
+                    <div class="settings-card">
+                        <div class="card-header-profile">
+                            <h3>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                                About Me
+                            </h3>
+                        </div>
+                        <div class="profile-form">
+                            <div class="form-group">
+                                <label>Bio</label>
+                                <textarea id="bio" class="form-textarea" rows="4" placeholder="Tell us about yourself, your interests, and goals..." disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save Changes Button (Hidden by default, shows when editing) -->
+                    <div class="profile-actions" style="display: none;" id="profileActions">
+                        <button class="btn-cancel" id="cancelEdit">Cancel</button>
+                        <button class="btn-save-primary" id="saveProfile">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- End Profile Section -->
+
+                   
+            <!-- Settings Section - IMPROVED VERSION -->
+            <div id="settings" class="content-section">
+                <div class="section-header">
+                    <h1>Settings</h1>
+                    <p>Customize your experience and manage account preferences</p>
+                </div>
+
+                <div class="settings-container">
+                    
+                    <!-- Appearance Settings -->
+                    <div class="settings-card">
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6"></path>
+                            </svg>
+                            <h3>Appearance</h3>
+                        </div>
+                        <div class="settings-options">
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Dark Mode</h4>
+                                    <p>Switch between light and dark theme</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="themeToggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Compact Mode</h4>
+                                    <p>Reduce spacing for more content on screen</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="compactMode">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notification Settings -->
+                    <div class="settings-card">
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                            </svg>
+                            <h3>Notifications</h3>
+                        </div>
+                        <div class="settings-options">
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Email Notifications</h4>
+                                    <p>Receive updates and announcements via email</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="emailNotifications" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Assignment Reminders</h4>
+                                    <p>Get notified 24 hours before assignment deadlines</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="assignmentReminders" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Grade Updates</h4>
+                                    <p>Notification when grades are posted</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="gradeNotifications" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Chat Messages</h4>
+                                    <p>Notifications for new messages</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="chatNotifications" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Announcements</h4>
+                                    <p>Important updates from instructors and administration</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="announcementNotifications" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Privacy & Security -->
+                    <div class="settings-card">
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            <h3>Privacy & Security</h3>
+                        </div>
+                        <div class="settings-options">
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Profile Visibility</h4>
+                                    <p>Allow other students to view your profile</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="profileVisibility" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Show Online Status</h4>
+                                    <p>Let others see when you're online</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="onlineStatus" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-option-button">
+                                <div>
+                                    <h4>Change Password</h4>
+                                    <p>Update your account password</p>
+                                </div>
+                                <button class="btn-secondary" id="changePasswordBtn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                                        <polyline points="10 17 15 12 10 7"></polyline>
+                                        <line x1="15" y1="12" x2="3" y2="12"></line>
+                                    </svg>
+                                    Change Password
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Academic Preferences -->
+                    <div class="settings-card">
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                            <h3>Academic Preferences</h3>
+                        </div>
+                        <div class="settings-options">
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Calendar View</h4>
+                                    <p>Default calendar view</p>
+                                </div>
+                                <select class="settings-select">
+                                    <option value="month">Month View</option>
+                                    <option value="week">Week View</option>
+                                    <option value="day">Day View</option>
+                                </select>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Tasks Sort By</h4>
+                                    <p>Default sorting for task list</p>
+                                </div>
+                                <select class="settings-select">
+                                    <option value="dueDate">Due Date</option>
+                                    <option value="priority">Priority</option>
+                                    <option value="course">Course</option>
+                                </select>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Week Starts On</h4>
+                                    <p>First day of the week</p>
+                                </div>
+                                <select class="settings-select">
+                                    <option value="sunday">Sunday</option>
+                                    <option value="monday">Monday</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Language & Region -->
+                    <div class="settings-card">
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                            <h3>Language & Region</h3>
+                        </div>
+                        <div class="settings-options">
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Language</h4>
+                                    <p>Interface language</p>
+                                </div>
+                                <select class="settings-select">
+                                    <option value="en">English</option>
+                                    <option value="fil">Filipino</option>
+                                </select>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Time Format</h4>
+                                    <p>Display time in 12 or 24 hour format</p>
+                                </div>
+                                <select class="settings-select">
+                                    <option value="12">12-hour (2:30 PM)</option>
+                                    <option value="24">24-hour (14:30)</option>
+                                </select>
+                            </div>
+                            <div class="settings-option">
+                                <div>
+                                    <h4>Date Format</h4>
+                                    <p>How dates are displayed</p>
+                                </div>
+                                <select class="settings-select">
+                                    <option value="mdy">MM/DD/YYYY</option>
+                                    <option value="dmy">DD/MM/YYYY</option>
+                                    <option value="ymd">YYYY-MM-DD</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data & Storage -->
+                    <div class="settings-card">
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                            </svg>
+                            <h3>Data & Storage</h3>
+                        </div>
+                        <div class="settings-options">
+                            <div class="settings-option-button">
+                                <div>
+                                    <h4>Clear Cache</h4>
+                                    <p>Free up space by clearing cached data</p>
+                                </div>
+                                <button class="btn-secondary" id="clearCacheBtn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="1 4 1 10 7 10"></polyline>
+                                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                                    </svg>
+                                    Clear Cache
+                                </button>
+                            </div>
+                            <div class="settings-option-button">
+                                <div>
+                                    <h4>Download My Data</h4>
+                                    <p>Export all your data from the system</p>
+                                </div>
+                                <button class="btn-secondary" id="downloadDataBtn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- About -->
+                    <div class="settings-card">
+                        <div class="settings-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                            <h3>About</h3>
+                        </div>
+                        <div class="settings-info">
+                            <div class="info-item">
+                                <span class="info-label">Version</span>
+                                <span class="info-value">1.0.0</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Last Updated</span>
+                                <span class="info-value">January 30, 2026</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Build</span>
+                                <span class="info-value">2026.01.30</span>
+                            </div>
+                        </div>
+                        <div class="settings-links">
+                            <a href="#" class="settings-link">Terms of Service</a>
+                            <a href="#" class="settings-link">Privacy Policy</a>
+                            <a href="#" class="settings-link">Help Center</a>
+                            <a href="#" class="settings-link">Report a Bug</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Settings Section -->
+
+        </main>
+    </div>
+
+    <!-- Firebase Authentication -->
+    <script type="module" src="firebase-service.js"></script>
+    <script type="module" src="auth.js"></script>
+    
+    <!-- Icons and Theme -->
+    <script type="module" src="utils.js"></script>
+    
+    <script type="module" src="script.js"></script>
+    <script type="module" src="user-features.js"></script>
+</body>
+</html>
