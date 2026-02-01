@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSPU Engineering Portal - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login-styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Left Side - Branding -->
+        <div class="login-left">
+            <div class="branding">
+                <div class="logo-large">
+                    <div class="logo-icon-large">LP</div>
+                    <h1>LSPU</h1>
+                </div>
+                <h2>Engineering Portal</h2>
+                <p>Your gateway to academic excellence</p>
+            </div>
+        </div>
+
+        <!-- Right Side - Forms -->
+        <div class="login-right">
+            <div class="form-container">
+                
+                <!-- LOGIN FORM -->
+                <div id="loginForm" class="auth-form active">
+                    <h2>Welcome Back! 👋</h2>
+                    <p class="form-subtitle">Sign in to continue</p>
+
+                    <form id="loginFormElement" class="form">
+                        <div class="form-group">
+                            <label for="loginUsername">Username</label>
+                            <input 
+                                type="text" 
+                                id="loginUsername" 
+                                class="form-input" 
+                                placeholder="Enter your username"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <div class="password-input-container">
+                                <input 
+                                    type="password" 
+                                    id="loginPassword" 
+                                    class="form-input" 
+                                    placeholder="Enter your password"
+                                    required
+                                >
+                                <button type="button" class="toggle-password" data-target="loginPassword">
+                                    <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary" id="loginBtn">
+                            <span class="btn-text">Sign In</span>
+                            <span class="btn-loader" style="display: none;">
+                                <span class="loader"></span>
+                            </span>
+                        </button>
+
+                        <div id="loginError" class="error-message" style="display: none;"></div>
+
+                        <p class="form-footer">
+                            Don't have an account? 
+                            <a href="#" id="showSignup" class="switch-form">Sign up</a>
+                        </p>
+                    </form>
+                </div>
+
+                <!-- SIGNUP FORM -->
+                <div id="signupForm" class="auth-form">
+                    <h2>Create Account 🎓</h2>
+                    <p class="form-subtitle">Join LSPU Engineering Portal</p>
+
+                    <form id="signupFormElement" class="form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="signupFirstName">First Name</label>
+                                <input 
+                                    type="text" 
+                                    id="signupFirstName" 
+                                    class="form-input" 
+                                    placeholder="Juan"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signupLastName">Last Name</label>
+                                <input 
+                                    type="text" 
+                                    id="signupLastName" 
+                                    class="form-input" 
+                                    placeholder="Dela Cruz"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signupUsername">Username</label>
+                            <input 
+                                type="text" 
+                                id="signupUsername" 
+                                class="form-input" 
+                                placeholder="juandelacruz"
+                                required
+                            >
+                            <small class="input-hint">No spaces or special characters</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signupPassword">Password</label>
+                            <div class="password-input-container">
+                                <input 
+                                    type="password" 
+                                    id="signupPassword" 
+                                    class="form-input" 
+                                    placeholder="Minimum 6 characters"
+                                    required
+                                >
+                                <button type="button" class="toggle-password" data-target="signupPassword">
+                                    <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signupConfirmPassword">Confirm Password</label>
+                            <div class="password-input-container">
+                                <input 
+                                    type="password" 
+                                    id="signupConfirmPassword" 
+                                    class="form-input" 
+                                    placeholder="Re-enter your password"
+                                    required
+                                >
+                                <button type="button" class="toggle-password" data-target="signupConfirmPassword">
+                                    <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary" id="signupBtn">
+                            <span class="btn-text">Create Account</span>
+                            <span class="btn-loader" style="display: none;">
+                                <span class="loader"></span>
+                            </span>
+                        </button>
+
+                        <button type="button" class="btn-secondary" id="backToLoginBtn">
+                            Back to Login
+                        </button>
+
+                        <div id="signupError" class="error-message" style="display: none;"></div>
+
+                        <div id="signupError" class="error-message" style="display: none;"></div>
+
+                        <p class="form-footer">
+                            Already have an account? 
+                            <a href="#" id="showLogin" class="switch-form">Sign in</a>
+                        </p>
+                    </form>
+                </div>
+
+                <!-- SUCCESS MESSAGE -->
+                <div id="successMessage" class="auth-form">
+                    <div class="success-container">
+                        <div class="success-icon">✓</div>
+                        <h2>Account Created! 🎉</h2>
+                        <p>Your account has been successfully created.</p>
+                        <button class="btn-primary" id="continueToLogin">
+                            Continue to Login
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module" src="firebase-service.js"></script>
+    <script type="module" src="login-auth.js"></script>
+</body>
+</html>
